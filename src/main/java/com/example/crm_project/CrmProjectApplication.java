@@ -1,6 +1,6 @@
 package com.example.crm_project;
 
-import com.example.crm_project.utils.Menu;
+import com.example.crm_project.Services.Menu;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,7 +1,7 @@
 package com.example.crm_project.utils;
 
 
-public class OutputMsg {
+public class Commands {
     // 🔴🟠🟡🟢🔵🟣🟤⚫ => Don't delete :D
     public static String MenuMessage =
             ConsoleColors.BLUE_BOLD_BRIGHT + "Welcome to your favorite CRM system. How can I help you today?" + ConsoleColors.RESET + "\n" +
