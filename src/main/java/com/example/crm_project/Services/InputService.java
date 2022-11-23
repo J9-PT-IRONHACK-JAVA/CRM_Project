@@ -39,7 +39,6 @@ public class InputService {
     }
 
     public void executeCommand(String input){
-        input = input.toLowerCase().trim();
 
         switch (input) {
             case REPORT -> {
@@ -47,6 +46,7 @@ public class InputService {
             }
             case NEW_LEAD -> {
 //                TODO createNewLead();
+                var i = 0;
             }
             case SHOW_LEADS -> {
 //                TODO showLeads();
