@@ -1,7 +1,7 @@
 package com.example.crm_project.Repository;
 
 
-public interface RepositoryCsv {
+public interface RepositoryExampleWithNotes {
     /*
      * En la carpeta de repository podemos crear un archivo repository para:
      * - Account
