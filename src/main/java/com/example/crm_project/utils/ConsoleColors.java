@@ -1,5 +1,8 @@
 package com.example.crm_project.utils;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class ConsoleColors {
     // Reset
     public static final String RESET = "\033[0m";  // Text Reset

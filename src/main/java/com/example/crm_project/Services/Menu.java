@@ -1,27 +1,32 @@
 package com.example.crm_project.Services;
 
 import com.example.crm_project.utils.Commands;
+import com.example.crm_project.utils.ConsoleColors;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Scanner;
 
-import static com.example.crm_project.Services.InputService.EXIT;
-import static com.example.crm_project.Services.InputService.YES;
 import static com.example.crm_project.utils.Prints.exitApp;
 import static com.example.crm_project.utils.TypeWriter.typewriterFromString;
 
 public class Menu {
-    private static InputService inputSVC = new InputService();
+
+
+    //Pk no va con autowired??????????????
+    private static CrmService crmService = new CrmService();
+    @Autowired
+    private ConsoleColors consoleColors;
     public static void mainMenu() {
 
         String input;
         do {
-            typewriterFromString(Commands.MenuMessage, 0);
+            System.out.println(ConsoleColors.BLUE_BOLD_BRIGHT + "Welcome to your favorite CRM system. How can I help you today?" + ConsoleColors.RESET + "\n" +"\n"+ConsoleColors.CYAN_BOLD_BRIGHT + " 🤔 What do you wanna do? 🤔" + ConsoleColors.RESET );
             input = new Scanner(System.in).nextLine().trim().toLowerCase();
-            if (input.equals(EXIT)){
+            if (input.equals(crmService.getEXIT())){
                 exitApp();
                 System.exit(0);
             }
-            inputSVC.executeCommand(input);
+            crmService.executeCommand(input);
 
         } while (true);
     }
