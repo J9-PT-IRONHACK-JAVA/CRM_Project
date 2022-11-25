@@ -4,8 +4,8 @@ package com.example.crm_project.utils;
 public class Commands {
     // 🔴🟠🟡🟢🔵🟣🟤⚫ => Don't delete :D
     public static String MenuMessage =
-            ConsoleColors.BLUE_BOLD_BRIGHT + "Welcome to your favorite CRM system. How can I help you today?" + ConsoleColors.RESET + "\n" +
-            "\n" +
+            /*ConsoleColors.BLUE_BOLD_BRIGHT + "Welcome to your favorite CRM system. How can I help you today?" + ConsoleColors.RESET + "\n" +
+            "\n" +*/
             ConsoleColors.PURPLE_BOLD_BRIGHT + "Available commands:" + ConsoleColors.RESET + "\n" +
             "\n" +
 
@@ -28,7 +28,8 @@ public class Commands {
             "   Existing Leads in our System: " + 5 +
             "\n" +
             "\n" +
-            "\n" +
-
-            ConsoleColors.CYAN_BOLD_BRIGHT + " 🤔 What do you wanna do? 🤔" + ConsoleColors.RESET;
+            "\n" ;
 }
+
+            //ConsoleColors.CYAN_BOLD_BRIGHT + " 🤔 What do you wanna do? 🤔" + ConsoleColors.RESET;
+
