@@ -2,17 +2,29 @@ package com.example.crm_project.Model;
 
 import lombok.*;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+
 @Getter
 @Setter
 @NoArgsConstructor
 
+@Entity
+@Table(name = "lead_table")
 public class Lead {
 
+    @Id
+    @NotNull
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
     private long phoneNumber;
     private String email;
     private String companyName;
+
+    @ManyToOne
+    @JoinColumn(name = "sales_rep_id")
     private SalesRep salesRepId;
 
     // Constructor => Without ID (lombok is importing a full constructor with ID if needed)

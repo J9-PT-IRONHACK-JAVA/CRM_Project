@@ -2,12 +2,15 @@ package com.example.crm_project.Model;
 
 import lombok.*;
 
+import javax.persistence.Embeddable;
+
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 
+@Embeddable
 public class Contact {
     private String name;
     private long phoneNumber;

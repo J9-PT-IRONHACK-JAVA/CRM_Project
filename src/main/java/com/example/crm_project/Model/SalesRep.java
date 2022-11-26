@@ -5,15 +5,27 @@ import lombok.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+
 @Getter
 @Setter
 @AllArgsConstructor
 
+@Entity
 public class SalesRep {
 
+    @Id
+    @NotNull
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
+
+    @OneToMany(mappedBy = "salesRepId")
     private List<Lead> leads;
+
+    @OneToMany(mappedBy = "salesRepId")
     private List<Opportunity> opportunities;
 
     // Constructor => Save a SalesRep with leads list and opportunities list

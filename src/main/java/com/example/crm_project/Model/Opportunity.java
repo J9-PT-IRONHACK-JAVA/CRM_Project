@@ -4,18 +4,38 @@ import com.example.crm_project.Enums.Product;
 import com.example.crm_project.Enums.Status;
 import lombok.*;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+
 @Getter
 @Setter
 @AllArgsConstructor
 
+@Entity
 public class Opportunity {
 
+    @Id
+    @NotNull
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private long quantity;
+
+    @Enumerated(EnumType.STRING)
     private Product product;
-    private Status status;
+
+    private long quantity;
+
+    @Embedded
     private Contact decisionMaker;
+
+    @Enumerated(EnumType.STRING)
+    private Status status;
+
+    @ManyToOne
+    @JoinColumn(name = "account_id")
     private Account accountId;
+
+    @ManyToOne
+    @JoinColumn(name = "sales_rep_id")
     private SalesRep salesRepId;
 
     // Constructor => Create Opportunity with status OPEN by default
