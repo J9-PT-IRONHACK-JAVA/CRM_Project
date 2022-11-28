@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.Scanner;
 
@@ -13,7 +14,7 @@ import static com.example.crm_project.utils.ConsoleColors.printWithColor;
 import static com.example.crm_project.utils.TypeWriter.typewriterFromString;
 
 @Data
-@Component
+@Service
 @NoArgsConstructor
 public class CrmService {
     private final String HELP  = "help";
@@ -36,11 +37,10 @@ public class CrmService {
     }
 
     public void executeCommand(String input){
-        System.out.println("Entra en metodo");
         switch (input) {
 
             case HELP -> {
-                typewriterFromString(Commands.MenuMessage, 0);
+                typewriterFromString(Commands.InitialHelpMessage, 0);
             }
             case REPORT -> {
                 executeReportCommand();

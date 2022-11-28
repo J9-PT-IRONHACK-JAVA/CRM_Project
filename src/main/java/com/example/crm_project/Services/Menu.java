@@ -3,20 +3,23 @@ package com.example.crm_project.Services;
 import com.example.crm_project.utils.Commands;
 import com.example.crm_project.utils.ConsoleColors;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
 
 import static com.example.crm_project.utils.Prints.exitApp;
 import static com.example.crm_project.utils.TypeWriter.typewriterFromString;
-
+@Component
 public class Menu {
 
 
     //Pk no va con autowired??????????????
-    private static CrmService crmService = new CrmService();
+//    private static CrmService crmService = new CrmService();
+    @Autowired
+    private CrmService crmService;
     @Autowired
     private ConsoleColors consoleColors;
-    public static void mainMenu() {
+    public void mainMenu() {
 
         String input;
         do {
