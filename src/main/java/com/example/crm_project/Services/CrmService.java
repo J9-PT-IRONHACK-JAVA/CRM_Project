@@ -46,8 +46,8 @@ public class CrmService {
                 executeReportCommand();
             }
             case NEW_LEAD-> {
-//                TODO createNewLead();
-                var i = 0;
+                var newLeadInfo = inputService.askNewLeadInfo();
+//                TODO createNewLead(newLeadInfo);
             }
             case SHOW_LEADS -> {
 //                TODO showLeads();

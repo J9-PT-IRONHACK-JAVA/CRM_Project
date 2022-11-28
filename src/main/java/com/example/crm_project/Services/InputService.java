@@ -37,7 +37,6 @@ public class InputService {
     }
 
     public int askOpportunityId() {
-        clearConsole("");
 
         var question = "Please enter the id of the opportunity you want to close";
 
@@ -52,7 +51,6 @@ public class InputService {
     }
 
     public String[] askAccountInfo() {
-        clearConsole("");
         var questionIndustry = "Please enter the industry associated to the contact's organization";
         var questionCountry = "Now enter the country associated to this new opportunity";
         var questionCity = "Now enter the city associated to this new opportunity";
@@ -80,24 +78,32 @@ public class InputService {
     }
 
     public String[] askOpportunityInfo() {
-        clearConsole("");
         var questionProduct = "Please enter the product associated to this new opportunity";
         var questionNumberOfTrucks = "Now enter the number of trucks associated to this new opportunity";
+        boolean isValidNumberOfTrucks;
 
-        printWithColor(questionProduct, ConsoleColors.WHITE_BRIGHT);
-        var product = chooseProduct();
+        var product = chooseProduct(questionProduct);
 
+        String numOfTrucks;
         do {
             printWithColor(questionNumberOfTrucks, ConsoleColors.WHITE_BRIGHT);
-            var numOfTrucks = prompt.nextLine();
-            if (validate.isValidIntInput(numOfTrucks)) {
-                return new String[] {product,numOfTrucks};
+            numOfTrucks = prompt.nextLine();
+            isValidNumberOfTrucks = validate.isValidIntInput(numOfTrucks);
+            if (isValidNumberOfTrucks == false) {
+                printWithColor("Please try a valid number (integer number)", ConsoleColors.RED);
             }
-            printWithColor("Please try a valid number (integer number)", ConsoleColors.RED);
-        } while (true);
+        } while (isValidNumberOfTrucks == false);
+
+        return new String[]{product, numOfTrucks};
     }
-    private String chooseProduct() {
+
+    private String chooseProduct(String questionProduct) {
         //    TODO method that displays a menu with the different product options
+//        do {
+//            printWithColor(questionProduct, ConsoleColors.WHITE_BRIGHT);
+//
+//        }while ()
+
 //        var product = prompt.nextLine();
 //
 //        switch (product){
@@ -111,32 +117,52 @@ public class InputService {
 
 
     public int askLeadId(){
-        clearConsole("");
-
         var question = "Please enter the id of the lead you want to recover";
 
         do {
             printWithColor(question, ConsoleColors.WHITE_BRIGHT);
             var id = prompt.nextLine();
-            if (validate.isValidIntInput(id)) {
+            if (validate.isValidIntInput(id) && validate.leadIdExists(id)) {
                 return Integer.parseInt(id);
             }
             printWithColor("Please try a valid id (integer number)", ConsoleColors.RED);
         } while (true);
     }
 
-    public static void clearConsole(String header) {
-        try {
-            if (System.getProperty("os.name").contains("Windows")) {
-                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-            }
-            else {
-                System.out.print("\033\143");
-                System.out.flush();
-            }
-        } catch (IOException | InterruptedException ex) {exitApp();}
+    public String[] askNewLeadInfo() {
+        var questionNewLeadName = "Please enter the new lead's name";
+        var questionNewLeadPhoneNumber = "Please enter the new lead's phone number";
+        var questionNewLeadEmail = "Please enter the new lead's email";
+        var questionNewLeadCompanyName = "Please enter the new lead's company name";
+        boolean isPhoneNumberValid;
+        boolean isEmailValid;
 
-        System.out.println(header);
+        printWithColor(questionNewLeadName, ConsoleColors.WHITE_BRIGHT);
+        var newLeadName = prompt.nextLine();
+
+        String newLeadPhoneNumber;
+        do {
+            printWithColor(questionNewLeadPhoneNumber, ConsoleColors.WHITE_BRIGHT);
+            newLeadPhoneNumber = prompt.nextLine();
+            isPhoneNumberValid = Validate.validatePhone(newLeadPhoneNumber);
+            if (isPhoneNumberValid == false) {
+                printWithColor("Invalid phone number, try again.", ConsoleColors.RED);
+            }
+        } while (isPhoneNumberValid == false);
+
+        String newLeadEmail;
+        do {
+            printWithColor(questionNewLeadEmail, ConsoleColors.WHITE_BRIGHT);
+            newLeadEmail = prompt.nextLine();
+            isEmailValid = Validate.validateEmailAddress(newLeadEmail);
+            if (isPhoneNumberValid == false) {
+                printWithColor("Invalid email address, try again.", ConsoleColors.RED);
+            }
+        } while (isPhoneNumberValid == false);
+
+        printWithColor(questionNewLeadCompanyName, ConsoleColors.WHITE_BRIGHT);
+        var newLeadCompanyName = prompt.nextLine();
+
+        return new String[]{newLeadName, newLeadPhoneNumber, newLeadEmail, newLeadCompanyName};
     }
-
 }
