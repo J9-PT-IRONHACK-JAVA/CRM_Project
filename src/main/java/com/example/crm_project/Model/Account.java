@@ -4,6 +4,8 @@ import com.example.crm_project.Enums.Industry;
 
 import lombok.*;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -13,6 +15,7 @@ import java.util.regex.Pattern;
 @Setter
 @NoArgsConstructor
 
+@Entity
 public class Account {
 
 
@@ -22,13 +25,23 @@ public class Account {
     public static final Pattern VALID_EMAIL_ADDRESS_REGEX =
             Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
 
+    @Id
+    @NotNull
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Enumerated(EnumType.STRING)
     private Industry industry;
+
     private long employeeCount;
     private String city;
     private String country;
-    private List<Contact> contacts;
-    private List<Opportunity> opportunities;
+
+    @ElementCollection(fetch = FetchType.EAGER)
+    private List<Contact> contacts = new ArrayList<>();
+
+    @OneToMany(mappedBy = "accountId")
+    private List<Opportunity> opportunities = new ArrayList<>();
 
     //  Constructor => Empty contact list & opportunity list
     public Account(String industry, long employeeCount, String city, String country) {
