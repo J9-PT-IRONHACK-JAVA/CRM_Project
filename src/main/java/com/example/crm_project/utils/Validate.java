@@ -36,4 +36,9 @@ public class Validate {
 //        TODO method that checks if lead id exists in current database
         return true;
     }
+
+    public boolean opportunityIdExists(String id) {
+//        TODO method that checks if opportunity id exists in current database
+        return true;
+    }
 }

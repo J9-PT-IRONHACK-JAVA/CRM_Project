@@ -36,17 +36,22 @@ public class InputService {
 
 
 
-    private void askSalesRepInfo() {
+    public String askSalesRepInfo() {
+        var questionNewSalesRepName = "You are about to create a new SalesRep. Please enter the new sales rep name";
+
+        printWithColor(questionNewSalesRepName, ConsoleColors.WHITE_BRIGHT);
+        var newSalesRepName = prompt.nextLine();
+
+        return newSalesRepName;
     }
 
     public int askOpportunityId() {
-
         var questionOpportunityId = "Please enter the id of the opportunity you want to close";
 
         do {
             printWithColor(questionOpportunityId, ConsoleColors.WHITE_BRIGHT);
             var id = prompt.nextLine();
-            if (validate.isValidIntInput(id)) {
+            if (validate.isValidIntInput(id) && validate.opportunityIdExists(id)) {
                 return Integer.parseInt(id);
             }
             printWithColor("Please try a valid id (integer number)", ConsoleColors.RED);
@@ -162,10 +167,10 @@ public class InputService {
 
 
     public int askLeadId(){
-        var question = "Please enter the id of the lead you want to recover";
+        var questionLeadId = "Please enter the id of the lead you want to recover";
 
         do {
-            printWithColor(question, ConsoleColors.WHITE_BRIGHT);
+            printWithColor(questionLeadId, ConsoleColors.WHITE_BRIGHT);
             var id = prompt.nextLine();
             if (validate.isValidIntInput(id) && validate.leadIdExists(id)) {
                 return Integer.parseInt(id);
