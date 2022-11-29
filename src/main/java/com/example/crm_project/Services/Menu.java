@@ -20,10 +20,11 @@ public class Menu {
     @Autowired
     private ConsoleColors consoleColors;
     public void mainMenu() {
+        System.out.println(ConsoleColors.BLUE_BOLD_BRIGHT + "Welcome to your favorite CRM system. How can I help you today?");
 
         String input;
         do {
-            System.out.println(ConsoleColors.BLUE_BOLD_BRIGHT + "Welcome to your favorite CRM system. How can I help you today?" + ConsoleColors.RESET + "\n" +"\n"+ConsoleColors.CYAN_BOLD_BRIGHT + " 🤔 What do you wanna do? 🤔" + ConsoleColors.RESET );
+            System.out.println(ConsoleColors.BLUE_BOLD_BRIGHT + " 🤔 What do you wanna do? 🤔" + ConsoleColors.RESET );
             input = new Scanner(System.in).nextLine().trim().toLowerCase();
             if (input.equals(crmService.getEXIT())){
                 exitApp();

@@ -1,8 +1,12 @@
 package com.example.crm_project.Repository;
 
-import java.util.List;
+import com.example.crm_project.Model.Opportunity;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface OpportunityRepository {
+import java.util.List;
+@Repository
+public interface OpportunityRepository extends JpaRepository<Opportunity, Long> {
     // * by Product
     //The mean quantity of products order can be displayed
     // ! Every method exposed here, needs to start with a @Query("query from SQL like we did on class in workbench")

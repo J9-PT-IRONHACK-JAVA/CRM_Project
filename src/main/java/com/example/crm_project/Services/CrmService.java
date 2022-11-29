@@ -1,5 +1,6 @@
 package com.example.crm_project.Services;
 
+import com.example.crm_project.Enums.Status;
 import com.example.crm_project.utils.Commands;
 import com.example.crm_project.utils.ConsoleColors;
 import lombok.Data;
@@ -21,6 +22,7 @@ public class CrmService {
     private final String REPORT = "report";
     private final String NEW_LEAD = "new lead";
     private final String SHOW_LEADS = "show leads";
+    private final String SHOW_SALESREP = "show salesrep";
     private final String LOOKUP_LEAD = "lookup lead";
     private final String CONVERT = "convert";
     private final String CLOSE_LOST_OPPORTUNITY = "close-lost";
@@ -33,11 +35,19 @@ public class CrmService {
     @Autowired
     private InputService inputService;
     @Autowired
-    private ReportIputService reportIputService;
+    private LeadService leadService;
+    @Autowired
+    private SalesRepService salesRepService;
+    @Autowired
+    private OpportunityService opportunityService;
+
+
+
     void executeReportCommand() {
     }
 
     public void executeCommand(String input){
+
         switch (input) {
 
             case HELP -> {
@@ -47,40 +57,40 @@ public class CrmService {
                 executeReportCommand();
             }
             case NEW_LEAD-> {
-//                TODO createNewLead();
-                var i = 0;
+                var newLeadInfo = inputService.askNewLeadInfo();
+                leadService.createNewLead(newLeadInfo);
             }
             case SHOW_LEADS -> {
-//                TODO showLeads();
+                leadService.showLeads();
+            }
+            case SHOW_SALESREP -> {
+                salesRepService.showSalesRep();
             }
             case LOOKUP_LEAD -> {
-                var id = inputService.askLeadId();
-//                TODO lookUpLead(id); should check if lead exists and, if so, should print the lead's information
+                var id = inputService.askLeadId("lookup");
+                leadService.lookUpLead(id); // should check if lead exists and, if so, should print the lead's information
             }
             case CONVERT -> {
-                var id = inputService.askLeadId();
+                var id = inputService.askLeadId("convert");
                 var opportunityInfo = inputService.askOpportunityInfo();
                 var accountInfo = inputService.askAccountInfo();
-//                TODO convertLead(id, opportunityInfo, accountInfo); creates new contact + deletes lead + creates new opportunity + creates new account
-
-
+                leadService.convertLead(id, opportunityInfo, accountInfo); //creates new contact + deletes lead + creates new opportunity + creates new account
             }
             case CLOSE_LOST_OPPORTUNITY -> {
                 var id = inputService.askOpportunityId();
-//                TODO closeLostOpportunity(id); edites opportunity status to enum CLOSED_LOST
+                opportunityService.closeOpportunity(id, Status.CLOSED_LOST); //edites opportunity status to enum CLOSED_LOST
             }
             case CLOSE_WON_OPPORTUNITY -> {
                 var id = inputService.askOpportunityId();
-//                TODO closeWonOpportunity(id); edites opportunity status to enum CLOSED_WON
+                opportunityService.closeOpportunity(id, Status.CLOSED_WON); //edites opportunity status to enum CLOSED_WON
             }
             case NEW_SALESREP -> {
-//                TODO var salesRepInfo = askSalesRepInfo();
-//                TODO createNewSalesRep();
+                var salesRepInfo = inputService.askSalesRepInfo();
+                salesRepService.createNewSalesRep();
             }
             default -> {
-                printWithColor("Command not recognized!", ConsoleColors.RED);
+                printWithColor("Command not recognized! Enter 'help' to see available commands.", ConsoleColors.RED);
             }
         }
     }
-
 }
