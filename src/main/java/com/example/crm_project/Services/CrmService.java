@@ -32,7 +32,8 @@ public class CrmService {
     private final String NO = "no";
     @Autowired
     private InputService inputService;
-
+    @Autowired
+    private ReportIputService reportIputService;
     void executeReportCommand() {
     }
 
