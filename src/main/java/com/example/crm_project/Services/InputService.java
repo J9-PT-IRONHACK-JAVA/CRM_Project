@@ -2,6 +2,7 @@ package com.example.crm_project.Services;
 
 // Aqui van todos los switches y los derivados de esos switches. (Andres)
 
+import com.example.crm_project.Enums.Industry;
 import com.example.crm_project.Enums.Product;
 import com.example.crm_project.utils.ConsoleColors;
 import com.example.crm_project.utils.Validate;
@@ -23,6 +24,8 @@ public class InputService {
 
     private final Scanner prompt;
 
+
+
     @Autowired
     private Validate validate;
 
@@ -38,10 +41,10 @@ public class InputService {
 
     public int askOpportunityId() {
 
-        var question = "Please enter the id of the opportunity you want to close";
+        var questionOpportunityId = "Please enter the id of the opportunity you want to close";
 
         do {
-            printWithColor(question, ConsoleColors.WHITE_BRIGHT);
+            printWithColor(questionOpportunityId, ConsoleColors.WHITE_BRIGHT);
             var id = prompt.nextLine();
             if (validate.isValidIntInput(id)) {
                 return Integer.parseInt(id);
@@ -51,38 +54,74 @@ public class InputService {
     }
 
     public String[] askAccountInfo() {
-        var questionIndustry = "Please enter the industry associated to the contact's organization";
+        var questionIndustry = "Please select the industry associated to the contact's organization:\n" +
+                "1) PRODUCE\n" +
+                "2) ECOMMERCE\n" +
+                "3) MANUFACTURING\n" +
+                "4) MEDICAL\n" +
+                "5) OTHER";
         var questionCountry = "Now enter the country associated to this new opportunity";
         var questionCity = "Now enter the city associated to this new opportunity";
         var questionNumberOfEmployees = "Please enter the number of employees associated to the contact's organization";
 
-        printWithColor(questionIndustry, ConsoleColors.WHITE_BRIGHT);
-        var industry = chooseIndustry();
+        var industry = chooseIndustry(questionIndustry);
         printWithColor(questionCountry, ConsoleColors.WHITE_BRIGHT);
         var country = prompt.nextLine();
         printWithColor(questionCity, ConsoleColors.WHITE_BRIGHT);
         var city = prompt.nextLine();
 
+        String numOfEmployees;
         do {
             printWithColor(questionNumberOfEmployees, ConsoleColors.WHITE_BRIGHT);
-            var numOfEmployees = prompt.nextLine();
+            numOfEmployees = prompt.nextLine();
             if (validate.isValidIntInput(numOfEmployees)) {
-                return new String[] {industry,country, city, numOfEmployees};
+                return new String[]{industry, country, city, numOfEmployees};
             }
             printWithColor("Please try a valid number (integer number)", ConsoleColors.RED);
         } while (true);
     }
 
-    private String chooseIndustry() {
-        return "";
+
+    private String chooseIndustry(String questionIndustry) {
+        String input;
+        do {
+            printWithColor(questionIndustry, ConsoleColors.WHITE_BRIGHT);
+            input = prompt.nextLine();
+            switch (input){
+                case "1" -> {
+                    input = "produce";
+                    return input;
+                }
+                case "2" -> {
+                    input = "ecommerce";
+                    return input;
+                }
+                case "3" -> {
+                    input = "manufacturing";
+                    return input;
+                }
+                case "4" -> {
+                    input = "medical";
+                    return input;
+                }
+                case "5" -> {
+                    input = "other";
+                    return input;
+                }
+                default -> printWithColor("Please try a valid option (1, 2, 3, 4 or 5)", ConsoleColors.RED);
+            }
+        }while (true);
     }
 
     public String[] askOpportunityInfo() {
-        var questionProduct = "Please enter the product associated to this new opportunity";
+        var questionProduct = "Please select the product associated to this new opportunity:\n" +
+                "1) HYBRID\n" +
+                "2) FLATBED\n" +
+                "3) BOX";
         var questionNumberOfTrucks = "Now enter the number of trucks associated to this new opportunity";
         boolean isValidNumberOfTrucks;
 
-        var product = chooseProduct(questionProduct);
+        String product = chooseProduct(questionProduct);
 
         String numOfTrucks;
         do {
@@ -98,20 +137,26 @@ public class InputService {
     }
 
     private String chooseProduct(String questionProduct) {
-        //    TODO method that displays a menu with the different product options
-//        do {
-//            printWithColor(questionProduct, ConsoleColors.WHITE_BRIGHT);
-//
-//        }while ()
-
-//        var product = prompt.nextLine();
-//
-//        switch (product){
-//            case Product.HYBRID, Product.FLATBED -> {
-//                return product;
-//            }
-//        }
-        return "";
+        String input;
+        do {
+            printWithColor(questionProduct, ConsoleColors.WHITE_BRIGHT);
+            input = prompt.nextLine();
+            switch (input){
+                case "1" -> {
+                    input = "hybrid";
+                    return input;
+                }
+                case "2" -> {
+                    input = "flatbed";
+                    return input;
+                }
+                case "3" -> {
+                    input = "box";
+                    return input;
+                }
+                default -> printWithColor("Please try a valid option (1, 2 or 3)", ConsoleColors.RED);
+            }
+        }while (true);
     }
 
 

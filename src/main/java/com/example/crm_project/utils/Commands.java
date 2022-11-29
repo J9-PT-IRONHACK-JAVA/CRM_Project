@@ -36,11 +36,12 @@ public class Commands {
             ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDFE0 close-lost" +
             "\n" +
             ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDFE0 close-won" +
+            "\n" +
+            ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDFE0 report" +
             "\n"
             //ConsoleColors.CYAN_BOLD_BRIGHT + " 🤔 What do you wanna do? 🤔" + ConsoleColors.RESET;
             ;
 
-    public static String ReportHelpMessage = "";
 }
 
 
