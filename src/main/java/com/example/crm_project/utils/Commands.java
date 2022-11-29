@@ -13,7 +13,7 @@ public class Commands {
             "\n" +
             ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDFE1 New Lead " + ConsoleColors.RESET +
             "\n" +
-            ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDFE0 Show SalesRep (15)" +
+            ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDFE0 Show SalesRep" +
 //                    "" +
 //                    "➡️ " + ConsoleColors.RESET + "Display a " +
 //            "list of " +
@@ -21,7 +21,7 @@ public class Commands {
 //
 //            "   Existing SalesRep in our System: " + 15 +
             "\n" +
-            ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDFE2 Show Leads (15)" +
+            ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDFE2 Show Leads" +
 //                    "➡️ " + ConsoleColors.RESET + "Display a list" +
 //            " " +
 //            "of available " +
@@ -35,9 +35,13 @@ public class Commands {
             "\n" +
             ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDFE0 close-lost" +
             "\n" +
-            ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDFE0 close-won"
+            ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDFE0 close-won" +
+            "\n" +
+            ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDFE0 report" +
+            "\n" + "\n"
+            //ConsoleColors.CYAN_BOLD_BRIGHT + " 🤔 What do you wanna do? 🤔" + ConsoleColors.RESET;
             ;
+
 }
 
-            //ConsoleColors.CYAN_BOLD_BRIGHT + " 🤔 What do you wanna do? 🤔" + ConsoleColors.RESET;
 
