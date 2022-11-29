@@ -16,5 +16,10 @@ public class LeadService {
     }
 
     public void convertLead(int id, String[] opportunityInfo, String[] accountInfo) {
+//        TODO
+//        buscar
+//        eliminar
+//        update
     }
+
 }

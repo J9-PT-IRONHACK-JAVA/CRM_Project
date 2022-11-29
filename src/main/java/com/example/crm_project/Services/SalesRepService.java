@@ -8,4 +8,7 @@ import org.springframework.stereotype.Component;
 public class SalesRepService {
     public void createNewSalesRep() {
     }
+
+    public void showSalesRep() {
+    }
 }

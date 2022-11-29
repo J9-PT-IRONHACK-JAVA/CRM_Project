@@ -22,6 +22,7 @@ public class CrmService {
     private final String REPORT = "report";
     private final String NEW_LEAD = "new lead";
     private final String SHOW_LEADS = "show leads";
+    private final String SHOW_SALESREP = "show salesrep";
     private final String LOOKUP_LEAD = "lookup lead";
     private final String CONVERT = "convert";
     private final String CLOSE_LOST_OPPORTUNITY = "close-lost";
@@ -61,12 +62,15 @@ public class CrmService {
             case SHOW_LEADS -> {
                 leadService.showLeads();
             }
+            case SHOW_SALESREP -> {
+                salesRepService.showSalesRep();
+            }
             case LOOKUP_LEAD -> {
-                var id = inputService.askLeadId();
+                var id = inputService.askLeadId("lookup");
                 leadService.lookUpLead(id); // should check if lead exists and, if so, should print the lead's information
             }
             case CONVERT -> {
-                var id = inputService.askLeadId();
+                var id = inputService.askLeadId("convert");
                 var opportunityInfo = inputService.askOpportunityInfo();
                 var accountInfo = inputService.askAccountInfo();
                 leadService.convertLead(id, opportunityInfo, accountInfo); //creates new contact + deletes lead + creates new opportunity + creates new account

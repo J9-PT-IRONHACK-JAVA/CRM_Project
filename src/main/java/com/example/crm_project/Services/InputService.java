@@ -166,8 +166,8 @@ public class InputService {
 
 
 
-    public int askLeadId(){
-        var questionLeadId = "Please enter the id of the lead you want to recover";
+    public int askLeadId(String whatToDo){
+        var questionLeadId = "Please enter the id of the lead you want to " + whatToDo;
 
         do {
             printWithColor(questionLeadId, ConsoleColors.WHITE_BRIGHT);
@@ -205,10 +205,10 @@ public class InputService {
             printWithColor(questionNewLeadEmail, ConsoleColors.WHITE_BRIGHT);
             newLeadEmail = prompt.nextLine();
             isEmailValid = Validate.validateEmailAddress(newLeadEmail);
-            if (isPhoneNumberValid == false) {
+            if (isEmailValid == false) {
                 printWithColor("Invalid email address, try again.", ConsoleColors.RED);
             }
-        } while (isPhoneNumberValid == false);
+        } while (isEmailValid == false);
 
         printWithColor(questionNewLeadCompanyName, ConsoleColors.WHITE_BRIGHT);
         var newLeadCompanyName = prompt.nextLine();
