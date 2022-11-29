@@ -36,8 +36,11 @@ public class CrmService {
     private InputService inputService;
     @Autowired
 <<<<<<< HEAD
+<<<<<<< HEAD
     private ReportIputService reportIputService;
 =======
+=======
+>>>>>>> 3a42cbda2462d6e842d9e66fc66b30ec2d15a5c7
     private LeadService leadService;
     @Autowired
     private SalesRepService salesRepService;
@@ -45,7 +48,11 @@ public class CrmService {
     private OpportunityService opportunityService;
 
 
+<<<<<<< HEAD
 >>>>>>> dev
+=======
+
+>>>>>>> 3a42cbda2462d6e842d9e66fc66b30ec2d15a5c7
     void executeReportCommand() {
     }
 

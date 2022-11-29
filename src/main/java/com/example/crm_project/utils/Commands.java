@@ -36,14 +36,24 @@ public class Commands {
             ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDFE0 close-lost" +
             "\n" +
 <<<<<<< HEAD
+<<<<<<< HEAD
             ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDFE0 close-won\n"
 =======
+=======
+
+            ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDFE0 close-won\n" +
+
+>>>>>>> 3a42cbda2462d6e842d9e66fc66b30ec2d15a5c7
             ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDFE0 close-won" +
             "\n" +
             ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDFE0 report" +
             "\n" + "\n"
             //ConsoleColors.CYAN_BOLD_BRIGHT + " 🤔 What do you wanna do? 🤔" + ConsoleColors.RESET;
+<<<<<<< HEAD
 >>>>>>> dev
+=======
+
+>>>>>>> 3a42cbda2462d6e842d9e66fc66b30ec2d15a5c7
             ;
 
 }
