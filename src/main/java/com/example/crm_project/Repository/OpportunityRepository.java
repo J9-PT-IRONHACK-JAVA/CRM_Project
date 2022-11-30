@@ -5,12 +5,12 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-@Repository
+//@Repository
 public interface OpportunityRepository extends JpaRepository<Opportunity, Long> {
     // * by Product
     //The mean quantity of products order can be displayed
     // ! Every method exposed here, needs to start with a @Query("query from SQL like we did on class in workbench")
-    Double getAvgQuantityOfProducts();
+    /*Double getAvgQuantityOfProducts();
 
     //The median quantity of products order
     Double getMedianQuantityOfProducts();
@@ -61,5 +61,5 @@ public interface OpportunityRepository extends JpaRepository<Opportunity, Long> 
     Long getMinOpportunitiesAccount();
 
     //median number of Opportunities associated with an Account
-    Double getMedianOpportunitiesAccount();
+    Double getMedianOpportunitiesAccount();*/
 }
