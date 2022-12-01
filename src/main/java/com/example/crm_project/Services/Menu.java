@@ -22,16 +22,18 @@ public class Menu {
     public void mainMenu() {
         System.out.println(ConsoleColors.BLUE_BOLD_BRIGHT + "Welcome to your favorite CRM system. How can I help you today?");
 
+        Scanner sc = new Scanner(System.in);
         String input;
 
         do {
             System.out.println(ConsoleColors.BLUE_BOLD_BRIGHT + " 🤔 What do you wanna do? 🤔" + ConsoleColors.RESET );
-            input = new Scanner(System.in).nextLine().trim().toLowerCase();
+            input = sc.nextLine().trim().toLowerCase();
             if (input.equals(crmService.getEXIT())){
                 exitApp();
                 System.exit(0);
             }
-            crmService.executeCommand(input);
+            crmService.executeCommand(input, sc);
+
 
         } while (true);
 

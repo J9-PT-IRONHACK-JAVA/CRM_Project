@@ -15,23 +15,21 @@ import static com.example.crm_project.utils.TypeWriter.typewriterFromString;
 @Component
 public class ReportInputService {
 
-    public void mainRepo(){
+    public void mainRepo(Scanner sc){
 
         boolean exit;
         String input;
         exit = false;
-        Scanner sc = new Scanner(System.in);
         System.out.println(ConsoleColors.BLUE_BOLD_BRIGHT + "Enter Kind of functionality to report");
         do{
             input = sc.nextLine().trim().toLowerCase();
             exit = mainRepoSwitch(input);
         }while(!exit);
-        sc.close();
 
     }
-    public boolean mainRepoSwitch(String string){
+    public boolean mainRepoSwitch(String input){
         boolean exit = false;
-        switch(string){
+        switch(input){
                 case "help":
                     typewriterFromString(Commands.mainReportMessage, 0);
                     break;
