@@ -23,6 +23,7 @@ public class Menu {
         System.out.println(ConsoleColors.BLUE_BOLD_BRIGHT + "Welcome to your favorite CRM system. How can I help you today?");
 
         String input;
+
         do {
             System.out.println(ConsoleColors.BLUE_BOLD_BRIGHT + " 🤔 What do you wanna do? 🤔" + ConsoleColors.RESET );
             input = new Scanner(System.in).nextLine().trim().toLowerCase();
@@ -33,5 +34,6 @@ public class Menu {
             crmService.executeCommand(input);
 
         } while (true);
+
     }
 }
