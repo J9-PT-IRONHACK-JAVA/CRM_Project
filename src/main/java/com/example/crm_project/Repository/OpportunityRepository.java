@@ -2,11 +2,16 @@ package com.example.crm_project.Repository;
 
 import com.example.crm_project.Model.Opportunity;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-//@Repository
+@Repository
 public interface OpportunityRepository extends JpaRepository<Opportunity, Long> {
+
+    //A count of all Opportunities by the product can be displayed by typing “Report Opportunity by the product”
+    @Query("SELECT a.product, COUNT(a) FROM Opportunity a GROUP BY a.product")
+    List<Opportunity>countOfOpportunitiesByProduct();
     // * by Product
     //The mean quantity of products order can be displayed
     // ! Every method exposed here, needs to start with a @Query("query from SQL like we did on class in workbench")
