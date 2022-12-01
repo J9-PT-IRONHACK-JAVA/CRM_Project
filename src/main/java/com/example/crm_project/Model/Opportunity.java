@@ -53,6 +53,11 @@ public class Opportunity {
         setSalesRepId(salesRepId);
     }
 
+    //Oportunity to check the count by product
+    public Opportunity(Product product){
+        this.product = product;
+    }
+
     // Constructor => Without account
     public Opportunity(String product, long quantity, Contact decisionMaker, SalesRep salesRepId) {
         setProduct(Product.valueOf(product));

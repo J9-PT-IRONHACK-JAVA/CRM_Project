@@ -35,6 +35,8 @@ public class CrmService {
     @Autowired
     private InputService inputService;
     @Autowired
+    private ReportInputService reportInputService;
+    @Autowired
     private LeadService leadService;
     @Autowired
     private SalesRepService salesRepService;
@@ -42,11 +44,10 @@ public class CrmService {
     private OpportunityService opportunityService;
 
 
-
     void executeReportCommand() {
     }
 
-    public void executeCommand(String input){
+    public void executeCommand(String input, Scanner sc){
 
         switch (input) {
 
@@ -55,6 +56,7 @@ public class CrmService {
             }
             case REPORT -> {
                 executeReportCommand();
+                reportInputService.mainRepo(sc);
             }
             case NEW_LEAD-> {
                 var newLeadInfo = inputService.askNewLeadInfo();

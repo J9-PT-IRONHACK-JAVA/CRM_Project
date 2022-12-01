@@ -6,10 +6,10 @@ import org.springframework.stereotype.Repository;
 
 import java.math.BigDecimal;
 import java.util.List;
-@Repository
+//@Repository
 public interface AccountRepository extends JpaRepository<Account, Long> {
-
-    List<Object[]> getCountOpportunitiesByIndustry();
+/*
+    List<Object[]> findCountOpportunitiesByIndustry();
 
     List<Object[]> getCountClosedWonOpportunitiesByIndustry();
 
@@ -23,6 +23,6 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
 
     Long getMinEmployeeCount();
 
-    Long getMedianEmployeeCount();
+    Long getMedianEmployeeCount();*/
 
 }

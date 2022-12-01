@@ -36,6 +36,8 @@ public class Commands {
             ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDFE0 close-lost" +
             "\n" +
 
+            ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDFE0 close-won\n"+
+
             ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDFE0 close-won\n" +
 
             ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDFE0 close-won" +
@@ -43,8 +45,28 @@ public class Commands {
             ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDFE0 report" +
             "\n" + "\n"
             //ConsoleColors.CYAN_BOLD_BRIGHT + " 🤔 What do you wanna do? 🤔" + ConsoleColors.RESET;
+ ;
 
-            ;
+
+    public static String mainReportMessage =
+
+            ConsoleColors.PURPLE_BOLD_BRIGHT + "Available commands:" + ConsoleColors.RESET + "\n" +
+                    "\n" +
+                    ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDD35 sales rep " + ConsoleColors.RESET +
+                    "\n" +
+                    ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDFE1 product " + ConsoleColors.RESET +
+                    "\n" +
+                    ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDFE0 country" +
+                    "\n" +
+                    ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDFE2 city" +
+                    "\n" +
+                    ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDFE0 industry" +
+                    "\n" +
+                    ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDFE0 EmployeeCount States" +
+                    "\n" +
+                    ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDFE0 Quantity States" +
+                    "\n" +
+                    ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDFE0 Opportunity States\n\n";
 
 }
 

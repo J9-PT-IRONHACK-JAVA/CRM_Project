@@ -5,9 +5,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-@Repository
+//@Repository
 public interface SalesRepRepository extends JpaRepository<SalesRep, Long> {
-    List<Object[]> getCountLeadsBySalesRep();
+   /* List<Object[]> getCountLeadsBySalesRep();
 
     List<Object[]> getCountOpportunitiesBySalesRep();
 
@@ -15,5 +15,5 @@ public interface SalesRepRepository extends JpaRepository<SalesRep, Long> {
 
     List<Object[]> findCountByStatusClosedLost();
 
-    List<Object[]> findCountByStatusOpen();
+    List<Object[]> findCountByStatusOpen();*/
 }
