@@ -12,10 +12,11 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 
 @Entity
+@Table (name = "opportunities")
 public class Opportunity {
 
     @Id
-    @NotNull
+    //@NotNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -32,25 +33,34 @@ public class Opportunity {
 
     @ManyToOne
     @JoinColumn(name = "account_id")
-    private Account accountId;
+    private Account account;
 
     @ManyToOne
     @JoinColumn(name = "sales_rep_id")
-    private SalesRep salesRepId;
+    private SalesRep salesRep;
 
     // Constructor => Create Opportunity with status OPEN by default
     public Opportunity() {
         setStatus(Status.OPEN);
     }
 
+    public Opportunity(Product product, long quantity, Contact decisionMaker, Status status, Account accountId, SalesRep salesRep) {
+        this.product = product;
+        this.quantity = quantity;
+        this.decisionMaker = decisionMaker;
+        this.status = status;
+        this.account = accountId;
+        this.salesRep = salesRep;
+    }
+
     // Constructor => Without ID (lombok is importing a full constructor with ID if needed)
-    public Opportunity(String product, long quantity, Contact decisionMaker, Account accountId, SalesRep salesRepId) {
-        setProduct(Product.valueOf(product));
+    public Opportunity(Product product, long quantity, Contact decisionMaker, Account account, SalesRep salesRep) {
+        setProduct(product);
         setQuantity(quantity);
         setDecisionMaker(decisionMaker);
         this.status = Status.OPEN;
-        setAccountId(accountId);
-        setSalesRepId(salesRepId);
+        setAccount(account);
+        setSalesRep(salesRep);
     }
 
     //Oportunity to check the count by product
@@ -59,12 +69,12 @@ public class Opportunity {
     }
 
     // Constructor => Without account
-    public Opportunity(String product, long quantity, Contact decisionMaker, SalesRep salesRepId) {
-        setProduct(Product.valueOf(product));
+    public Opportunity(Product product, long quantity, Contact decisionMaker, SalesRep salesRep) {
+        this.product= product;
         setQuantity(quantity);
         setDecisionMaker(decisionMaker);
         this.status = Status.OPEN;
-        setSalesRepId(salesRepId);
+        setSalesRep(salesRep);
     }
 
     @Override

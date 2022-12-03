@@ -16,10 +16,12 @@ import java.util.regex.Pattern;
 @NoArgsConstructor
 
 @Entity
+@Table (name = "accounts")
+
 public class Account {
 
     @Id
-    @NotNull
+    //@NotNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -33,7 +35,7 @@ public class Account {
     @ElementCollection(fetch = FetchType.EAGER)
     private List<Contact> contacts = new ArrayList<>();
 
-    @OneToMany(mappedBy = "accountId")
+    @OneToMany(mappedBy = "account")
     private List<Opportunity> opportunities = new ArrayList<>();
 
     //  Constructor => Empty contact list & opportunity list

@@ -2,7 +2,8 @@ package com.example.crm_project.Model;
 
 import lombok.*;
 
-import javax.persistence.Embeddable;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 
 @Getter
@@ -12,6 +13,7 @@ import javax.persistence.Embeddable;
 
 @Embeddable
 public class Contact {
+
     private String name;
     private long phoneNumber;
     private String email;

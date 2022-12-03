@@ -13,19 +13,21 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 
 @Entity
+@Table( name = "salesReps")
 public class SalesRep {
 
     @Id
-    @NotNull
+    //@NotNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column (name = "rep_name")
     private String name;
 
-    @OneToMany(mappedBy = "salesRepId")
+    @OneToMany(mappedBy = "salesRep")
     private List<Lead> leads;
 
-    @OneToMany(mappedBy = "salesRepId")
+    @OneToMany(mappedBy = "salesRep")
     private List<Opportunity> opportunities;
 
     // Constructor => Save a SalesRep with leads list and opportunities list

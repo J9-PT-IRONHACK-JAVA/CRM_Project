@@ -10,8 +10,9 @@ import java.util.List;
 public interface OpportunityRepository extends JpaRepository<Opportunity, Long> {
 
     //A count of all Opportunities by the product can be displayed by typing “Report Opportunity by the product”
-    @Query("SELECT a.product, COUNT(a) FROM Opportunity a GROUP BY a.product")
+    @Query("SELECT a FROM Opportunity a ")
     List<Opportunity>countOfOpportunitiesByProduct();
+
     // * by Product
     //The mean quantity of products order can be displayed
     // ! Every method exposed here, needs to start with a @Query("query from SQL like we did on class in workbench")

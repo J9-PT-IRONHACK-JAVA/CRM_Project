@@ -10,7 +10,7 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 
 @Entity
-@Table(name = "lead_table")
+@Table(name = "leads")
 public class Lead {
 
     @Id
@@ -25,7 +25,7 @@ public class Lead {
 
     @ManyToOne
     @JoinColumn(name = "sales_rep_id")
-    private SalesRep salesRepId;
+    private SalesRep salesRep;
 
     // Constructor => Without ID (lombok is importing a full constructor with ID if needed)
     public Lead(String name, long phoneNumber, String email, String companyName) {
@@ -36,12 +36,12 @@ public class Lead {
     }
 
     // Constructor => With salesRep
-    public Lead(String name, long phoneNumber, String email, String companyName, SalesRep salesRepId) {
+    public Lead(String name, long phoneNumber, String email, String companyName, SalesRep salesRep) {
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.companyName = companyName;
-        this.salesRepId = salesRepId;
+        this.salesRep = salesRep;
     }
 
 
