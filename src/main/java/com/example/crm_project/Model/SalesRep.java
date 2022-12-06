@@ -10,6 +10,7 @@ import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
+@Data
 @AllArgsConstructor
 
 @Entity
@@ -54,5 +55,7 @@ public class SalesRep {
         this.opportunities = opportunities;
         this.password = password;
     }
+
+
 
 }

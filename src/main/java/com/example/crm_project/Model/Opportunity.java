@@ -10,7 +10,7 @@ import javax.validation.constraints.NotNull;
 @Getter
 @Setter
 @AllArgsConstructor
-
+@Data
 @Entity
 @Table (name = "opportunities")
 public class Opportunity {
@@ -82,6 +82,7 @@ public class Opportunity {
         return "Opportunity: id = " + getId() + ", product = " + getProduct() + ", trucks quantity = " + getQuantity() + ", " +
                "status" +
                " = " + getStatus() +
-               "\n Decision maker " + getDecisionMaker();
+               "\n Decision maker " + getDecisionMaker() +
+                "\n Sales rep " + this.salesRep;
     }
 }
