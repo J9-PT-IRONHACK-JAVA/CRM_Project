@@ -19,7 +19,12 @@ public class Menu {
     private CrmService crmService;
     @Autowired
     private ConsoleColors consoleColors;
+    @Autowired
+    private LoginService loginService;
     public void mainMenu() {
+
+        loginService.login();
+
         System.out.println(ConsoleColors.BLUE_BOLD_BRIGHT + "Welcome to your favorite CRM system. How can I help you today?");
 
         Scanner sc = new Scanner(System.in);

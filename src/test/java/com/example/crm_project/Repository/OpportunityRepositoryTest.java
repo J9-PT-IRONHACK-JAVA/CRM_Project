@@ -78,6 +78,9 @@ class OpportunityRepositoryTest {
 
     @Test
     void countOfOpportunitiesByProductTest() {
+        var contact = new Contact( "Dani", 633223530, "daniRoman@gmail.com","Juanazo&Co");
+        var acount = new Account("Medical", 20, "London", "UK");
+        var sales = new SalesRep("Sara", "amoAMiPerro89");
 
         var result = opportunityRepository.countOfOpportunitiesByProduct();
         var actual = result.get(1)[1];
