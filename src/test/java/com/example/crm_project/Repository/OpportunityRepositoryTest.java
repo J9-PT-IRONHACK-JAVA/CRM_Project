@@ -45,7 +45,7 @@ class OpportunityRepositoryTest {
     void countOfOpportunitiesByProductTest() {
         var contact = new Contact( "Dani", 633223530, "daniRoman@gmail.com","Juanazo&Co");
         var acount = new Account("Medical", 20, "London", "UK");
-        var sales = new SalesRep("Sara");
+        var sales = new SalesRep("Sara", "amoAMiPerro89");
 
         accountRepository.save(acount);
         salesRepRepository.save(sales);

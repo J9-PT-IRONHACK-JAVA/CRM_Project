@@ -30,24 +30,29 @@ public class SalesRep {
     @OneToMany(mappedBy = "salesRep")
     private List<Opportunity> opportunities;
 
+    private String password;
+
     // Constructor => Save a SalesRep with leads list and opportunities list
     public SalesRep() {
         this.leads = new ArrayList<>();
         this.opportunities = new ArrayList<>();
+
     }
 
     // Constructor => Save a SalesRep with X name with leads list and opportunities list
-    public SalesRep(String name) {
+    public SalesRep(String name, String password) {
         this.name = name;
         this.leads = new ArrayList<>();
         this.opportunities = new ArrayList<>();
+        this.password = password;
     }
 
     // Constructor => Save a SalesRep with X name, X leads list, X opportunities list
-    public SalesRep(String name, List<Lead> leads, List<Opportunity> opportunities) {
+    public SalesRep(String name, List<Lead> leads, List<Opportunity> opportunities, String password) {
         this.name = name;
         this.leads = leads;
         this.opportunities = opportunities;
+        this.password = password;
     }
 
 }

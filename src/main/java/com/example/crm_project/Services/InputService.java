@@ -215,4 +215,16 @@ public class InputService {
 
         return new String[]{newLeadName, newLeadPhoneNumber, newLeadEmail, newLeadCompanyName};
     }
+
+    public String askUserName() {
+        System.out.println("Please enter your username:");
+        var userName = prompt.nextLine();
+        return userName;
+    }
+
+    public String askPassword() {
+        System.out.println("Please enter your password:");
+        var password = prompt.nextLine();
+        return password;
+    }
 }
