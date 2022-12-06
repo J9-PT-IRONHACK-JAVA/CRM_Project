@@ -10,6 +10,7 @@ import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
+@Data
 @AllArgsConstructor
 
 @Entity
@@ -49,5 +50,7 @@ public class SalesRep {
         this.leads = leads;
         this.opportunities = opportunities;
     }
+
+
 
 }
