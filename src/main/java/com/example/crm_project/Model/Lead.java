@@ -19,7 +19,7 @@ public class Lead {
     private Long id;
 
     private String name;
-    private long phoneNumber;
+    private String phoneNumber;
     private String email;
     private String companyName;
 
@@ -28,7 +28,7 @@ public class Lead {
     private SalesRep salesRep;
 
     // Constructor => Without ID (lombok is importing a full constructor with ID if needed)
-    public Lead(String name, long phoneNumber, String email, String companyName) {
+    public Lead(String name, String phoneNumber, String email, String companyName) {
         setName(name);
         setPhoneNumber(phoneNumber);
         setEmail(email);
@@ -36,7 +36,7 @@ public class Lead {
     }
 
     // Constructor => With salesRep
-    public Lead(String name, long phoneNumber, String email, String companyName, SalesRep salesRep) {
+    public Lead(String name, String phoneNumber, String email, String companyName, SalesRep salesRep) {
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.email = email;
