@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.io.StringReader;
 
 
 @Getter
@@ -15,7 +16,7 @@ import javax.validation.constraints.NotNull;
 public class Contact {
 
     private String name;
-    private long phoneNumber;
+    private String phoneNumber;
     private String email;
     private String companyName;
 
