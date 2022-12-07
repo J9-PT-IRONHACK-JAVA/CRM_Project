@@ -7,12 +7,17 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 //@Repository
 public interface SalesRepRepository extends JpaRepository<SalesRep, Long> {
+//    SalesRep findSalesRepByNameAndPassword();
+//    boolean checkIfUsernameExists();
+//
+//    void findPasswordByUsername(String userName, String password);
 
-    boolean checkIfUsernameExists();
+//    boolean checkIfUsernameExists();
+//
+//    String findPasswordByUsername(String userName, String password);
+//
+//    SalesRep findSalesRepByNameAndPassword();
 
-    String findPasswordByUsername(String userName, String password);
-
-    SalesRep findSalesRepByNameAndPassword();
    /* List<Object[]> getCountLeadsBySalesRep();
 
     List<Object[]> getCountOpportunitiesBySalesRep();

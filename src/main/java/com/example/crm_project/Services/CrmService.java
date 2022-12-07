@@ -1,8 +1,12 @@
 package com.example.crm_project.Services;
 
 import com.example.crm_project.Enums.Status;
+import com.example.crm_project.Model.Account;
+import com.example.crm_project.Repository.AccountRepository;
+import com.example.crm_project.Repository.LeadRepository;
 import com.example.crm_project.utils.Commands;
 import com.example.crm_project.utils.ConsoleColors;
+import com.example.crm_project.utils.Validate;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +46,12 @@ public class CrmService {
     private SalesRepService salesRepService;
     @Autowired
     private OpportunityService opportunityService;
+    @Autowired
+    private LeadRepository leadRepository;
+    @Autowired
+    private AccountRepository accountRepository;
+    @Autowired
+    private Validate validate;
 
 
     void executeReportCommand() {
@@ -74,9 +84,14 @@ public class CrmService {
             }
             case CONVERT -> {
                 var id = inputService.askLeadId("convert");
-                var opportunityInfo = inputService.askOpportunityInfo();
-                var accountInfo = inputService.askAccountInfo();
-                leadService.convertLead(id, opportunityInfo, accountInfo); //creates new contact + deletes lead + creates new opportunity + creates new account
+//                var leadToConvert = leadRepository.findById((long) id);
+//                var opportunityInfo = inputService.askOpportunityInfo();
+//                var existingAccount = accountRepository.findAccountByName(leadToConvert.get().getCompanyName());
+//                if(existingAccount == null){
+//                    var newAccountInfo = inputService.askNewAccountInfo();
+//                    leadService.convertLead(leadToConvert, opportunityInfo, newAccountInfo); //creates new contact + deletes lead + creates new opportunity + creates new account
+//                }
+//                leadService.convertLead(leadToConvert, opportunityInfo, existingAccount); //creates new contact + deletes lead + creates new opportunity + creates new account
             }
             case CLOSE_LOST_OPPORTUNITY -> {
                 var id = inputService.askOpportunityId();

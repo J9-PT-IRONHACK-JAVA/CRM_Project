@@ -90,4 +90,12 @@ public class Account {
         return "Account: id = " + getId() + ", industry= " + getIndustry() + ", employeeCount= " + getEmployeeCount() + ", city= " + getCity() + ", country= " + getCountry() +
                "\n Contact List \n" + getContacts() + "\n Opportunity List \n" + getOpportunities();
     }
+
+    public void addContact(Contact newContact) {
+        this.contacts.add(newContact);
+    }
+
+    public void addOpportunity(Opportunity newOpportunity) {
+        this.opportunities.add(newOpportunity);
+    }
 }

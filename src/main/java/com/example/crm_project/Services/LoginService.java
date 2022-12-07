@@ -3,6 +3,7 @@ package com.example.crm_project.Services;
 import com.example.crm_project.Model.SalesRep;
 import com.example.crm_project.Repository.SalesRepRepository;
 import com.example.crm_project.utils.ConsoleColors;
+import com.example.crm_project.utils.Prints;
 import com.example.crm_project.utils.Validate;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -26,9 +27,11 @@ public class LoginService {
 
     @Autowired
     private SalesRepRepository salesRepRepository;
-
+    @Autowired
+    private Prints prints;
 
     public void login(){
+        prints.printLogin();
         String userName;
         String password;
         do {
@@ -47,8 +50,8 @@ public class LoginService {
             }
         }while (isValidPassword == false);
 
-        var loggedSalesRep = salesRepRepository.findSalesRepByNameAndPassword();
-        this.setCurrentSalesRep(loggedSalesRep);
+//        var loggedSalesRep = salesRepRepository.findSalesRepByNameAndPassword();
+//        this.setCurrentSalesRep(loggedSalesRep);
         System.out.println("Login successful");
     }
 
