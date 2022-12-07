@@ -44,12 +44,12 @@ public class Opportunity {
         setStatus(Status.OPEN);
     }
 
-    public Opportunity(Product product, long quantity, Contact decisionMaker, Status status, Account accountId, SalesRep salesRep) {
+    public Opportunity(Product product, long quantity, Contact decisionMaker, Status status, Account account, SalesRep salesRep) {
         this.product = product;
         this.quantity = quantity;
         this.decisionMaker = decisionMaker;
         this.status = status;
-        this.account = accountId;
+        this.account = account;
         this.salesRep = salesRep;
     }
 

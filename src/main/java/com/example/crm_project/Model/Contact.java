@@ -7,19 +7,26 @@ import javax.validation.constraints.NotNull;
 import java.io.StringReader;
 
 
-@Getter
-@Setter
-@AllArgsConstructor
+@Data
 @NoArgsConstructor
-
-@Embeddable
+@Entity
 public class Contact {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     private String name;
     private String phoneNumber;
     private String email;
     private String companyName;
 
+    public Contact(String name, String phoneNumber, String email, String companyName) {
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.companyName = companyName;
+    }
 
     @Override
     public String toString() {

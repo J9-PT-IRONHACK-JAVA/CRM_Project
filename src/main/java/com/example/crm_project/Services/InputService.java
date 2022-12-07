@@ -2,32 +2,27 @@ package com.example.crm_project.Services;
 
 // Aqui van todos los switches y los derivados de esos switches. (Andres)
 
-import com.example.crm_project.Enums.Industry;
-import com.example.crm_project.Enums.Product;
+import com.example.crm_project.Model.Account;
+import com.example.crm_project.Repository.AccountRepository;
 import com.example.crm_project.utils.ConsoleColors;
 import com.example.crm_project.utils.Validate;
 import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.io.IOException;
 import java.util.Scanner;
 
 import static com.example.crm_project.utils.ConsoleColors.printWithColor;
-import static com.example.crm_project.utils.Prints.exitApp;
 
 @Data
 @Component
 public class InputService {
 
     private final Scanner prompt;
-
-
-
     @Autowired
     private Validate validate;
+    @Autowired
+    private AccountRepository accountRepository;
 
     public InputService() {
         this.prompt = new Scanner(System.in);
@@ -58,7 +53,7 @@ public class InputService {
         } while (true);
     }
 
-    public String[] askAccountInfo() {
+    public String[] askNewAccountInfo() {
         var questionIndustry = "Please select the industry associated to the contact's organization:\n" +
                 "1) PRODUCE\n" +
                 "2) ECOMMERCE\n" +
@@ -166,7 +161,7 @@ public class InputService {
 
 
 
-    public int askLeadId(String whatToDo){
+    public long askLeadId(String whatToDo){
         var questionLeadId = "Please enter the id of the lead you want to " + whatToDo;
 
         do {
@@ -227,4 +222,5 @@ public class InputService {
         var password = prompt.nextLine();
         return password;
     }
+
 }

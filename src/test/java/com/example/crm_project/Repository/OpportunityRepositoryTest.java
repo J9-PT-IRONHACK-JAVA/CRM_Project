@@ -17,7 +17,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.HashMap;
 import java.util.List;
 
-import static com.example.crm_project.Enums.Industry.MEDICAL;
+import static com.example.crm_project.Enums.Industry.*;
 import static com.example.crm_project.Enums.Product.*;
 import static com.example.crm_project.Enums.Status.*;
 import static org.junit.jupiter.api.Assertions.*;
@@ -35,20 +35,20 @@ class OpportunityRepositoryTest {
 
         //var contact = new Contact( "Dani", 633223530, "daniRoman@gmail.com","Juanazo&Co");
         var contact = new Contact( "MArtina", "633223530", "daniRoman@gmail.com","Juanazo&Co");
-        var acount = new Account("Medical", 20, "London", "UK");
-        var sales = new SalesRep("Sara");
+        var acount = new Account("plusMedical",MEDICAL, 20, "London", "UK");
+        var sales = new SalesRep("Sara", "amoAMiPerro89");
 
         var contact2 = new Contact( "Juan", "623227535", "juan@gmail.com","LaCalaver");
-        var acount2 = new Account("produce", 300, "Berlin", "Germany");
-        var sales2 = new SalesRep("Adri");
+        var acount2 = new Account("fabricaTop", PRODUCE, 300, "Berlin", "Germany");
+        var sales2 = new SalesRep("Adri", "amoAMiPerro89");
 
         var contact3 = new Contact( "JAcob", "636666530", "ivan@gmail.com","Interco");
-        var acount3 = new Account("ecommerce", 30, "islaTypi", "Isla feroe");
-        var sales3 = new SalesRep("Andres");
+        var acount3 = new Account("TiendaPaco", ECOMMERCE, 30, "islaTypi", "Isla feroe");
+        var sales3 = new SalesRep("Andres", "amoAMiPerro89");
 
         var contact4 = new Contact( "Martin", "656666530", "martin@gmail.com","LaSalle");
-        var acount4 = new Account("ecommerce", 100, "Barcelona", "España");
-        var sales4 = new SalesRep("Dani");
+        var acount4 = new Account("TiendaLuis", ECOMMERCE, 100, "Barcelona", "España");
+        var sales4 = new SalesRep("Dani", "amoAMiPerro89");
 
         accountRepository.save(acount);
         accountRepository.save(acount2);
@@ -78,8 +78,8 @@ class OpportunityRepositoryTest {
 
     @Test
     void countOfOpportunitiesByProductTest() {
-        var contact = new Contact( "Dani", 633223530, "daniRoman@gmail.com","Juanazo&Co");
-        var acount = new Account("Medical", 20, "London", "UK");
+        var contact = new Contact( "Dani", "633223530", "daniRoman@gmail.com","Juanazo&Co");
+        var acount = new Account("Whiscares", MEDICAL, 20, "London", "UK");
         var sales = new SalesRep("Sara", "amoAMiPerro89");
 
         var result = opportunityRepository.countOfOpportunitiesByProduct();
