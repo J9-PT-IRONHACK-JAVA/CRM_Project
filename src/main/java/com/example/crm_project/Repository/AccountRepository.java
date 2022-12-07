@@ -8,6 +8,7 @@ import java.math.BigDecimal;
 import java.util.List;
 //@Repository
 public interface AccountRepository extends JpaRepository<Account, Long> {
+//    Account findAccountByName(String companyName);
 /*
     List<Object[]> findCountOpportunitiesByIndustry();
 

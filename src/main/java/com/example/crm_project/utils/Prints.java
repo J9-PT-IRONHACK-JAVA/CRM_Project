@@ -4,6 +4,7 @@ import com.example.crm_project.Model.Lead;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class Prints {
@@ -52,6 +53,24 @@ public class Prints {
         System.out.println("Total: " + count);
     }
 
+    public void lookUpLead(Optional<Lead> lead) {
+        System.out.printf("""
+                *Lead specifications*
+                Lead Id: %d%n
+                Name: %s
+                Phone number: %s
+                Email: %s
+                Company name: %s
+                Sales Rep: %s
+                """,
+                lead.get().getId(),
+                lead.get().getName(),
+                lead.get().getPhoneNumber(),
+                lead.get().getEmail(),
+                lead.get().getCompanyName(),
+                lead.get().getSalesRep().getName());
+    }
+
 
     public static void exitApp() {
         System.out.println("""
@@ -60,4 +79,10 @@ public class Prints {
                 """);
     }
 
+    public void printLogin() {
+        System.out.println("""
+                
+                TruckyCRM Login
+                """);
+    }
 }

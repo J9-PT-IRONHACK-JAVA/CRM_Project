@@ -58,7 +58,7 @@ public class InputService {
         } while (true);
     }
 
-    public String[] askAccountInfo() {
+    public String[] askNewAccountInfo() {
         var questionIndustry = "Please select the industry associated to the contact's organization:\n" +
                 "1) PRODUCE\n" +
                 "2) ECOMMERCE\n" +
