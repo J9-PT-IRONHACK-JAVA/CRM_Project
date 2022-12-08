@@ -23,6 +23,7 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String companyName;
     @Enumerated(EnumType.STRING)
     private Industry industry;
 
@@ -37,7 +38,8 @@ public class Account {
     private List<Opportunity> opportunities = new ArrayList<>();
 
     //  Constructor => Empty contact list & opportunity list
-    public Account(String industry, long employeeCount, String city, String country) {
+    public Account(String companyName, String industry, long employeeCount, String city, String country) {
+        setCompanyName(companyName);
         setIndustry(industry);
         setEmployeeCount(employeeCount);
         setCity(city);
@@ -47,7 +49,8 @@ public class Account {
     }
 
     //  Constructor => Adds a contact to contacts list & opportunity to opportunity list
-    public Account(String industry, long employeeCount, String city, String country, Contact contact, Opportunity opportunity) {
+    public Account(String companyName, String industry, long employeeCount, String city, String country, Contact contact, Opportunity opportunity) {
+        setCompanyName(companyName);
         setIndustry(industry);
         setEmployeeCount(employeeCount);
         setCity(city);
@@ -57,7 +60,8 @@ public class Account {
     }
 
     // Constructor => Uses list of contacts opportunities
-    public Account(Industry industry, long employeeCount, String city, String country, List<Contact> contacts, List<Opportunity> opportunities) {
+    public Account(String companyName, Industry industry, long employeeCount, String city, String country, List<Contact> contacts, List<Opportunity> opportunities) {
+        setCompanyName(companyName);
         this.industry = industry;
         this.employeeCount = employeeCount;
         this.city = city;
@@ -94,9 +98,9 @@ public class Account {
         return contact;
     }
 
-//    public void addContact(Lead newContact) {
-//        this.contacts.add(newContact);
-//    }
+    public void addContact(Contact newContact) {
+        this.contacts.add(newContact);
+    }
 
     public void addOpportunity(Opportunity newOpportunity) {
         this.opportunities.add(newOpportunity);

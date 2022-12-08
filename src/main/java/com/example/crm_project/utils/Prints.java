@@ -133,4 +133,27 @@ public class Prints {
                 opportunity.getSalesRep().getName(),
                 opportunity.getStatus().name());
     }
+
+    public void leadSuccessfullyConverted(Opportunity opportunity) {
+        System.out.printf("""
+                *New opportunity*
+                Opportunity Id: %s
+                Product: %s
+                Quantity: %d
+                Decision maker: %s
+                Account: %s
+                SalesRep: %s
+                Status: %s
+                
+                Lead was successfully converted!
+             
+                """,
+                opportunity.getId(),
+                opportunity.getProduct().name(),
+                opportunity.getQuantity(),
+                opportunity.getDecisionMaker().getName(),
+                opportunity.getDecisionMaker().getCompanyName(),
+                opportunity.getSalesRep().getName(),
+                opportunity.getStatus().name());
+    }
 }

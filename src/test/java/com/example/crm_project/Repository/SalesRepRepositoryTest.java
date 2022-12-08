@@ -54,7 +54,7 @@ class SalesRepRepositoryTest {
         lead2 = leadRepository.save(new Lead("Andrés", "999888777", "mail@mail.com", "Apple", salesRep));
         lead3 = leadRepository.save(new Lead("Dani", "999888777", "mail@mail.com", "Apple"));
         contactList.add(Account.newContact(lead));
-        account = accountRepository.save(new Account(Industry.ECOMMERCE, 200L, "BCN", "ESP", contactList, opportunityList));
+        account = accountRepository.save(new Account("TiendaPaco",Industry.ECOMMERCE, 200L, "BCN", "ESP", contactList, opportunityList));
         opportunity = opportunityRepository.save(new Opportunity(Product.BOX, 20L, Account.newContact(lead), account,
                 salesRep));
 

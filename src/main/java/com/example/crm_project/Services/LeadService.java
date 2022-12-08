@@ -45,16 +45,18 @@ public class LeadService {
         var lead = leadRepository.findById(id);
         prints.lookUpLead(lead.get());
     }
-/*
+
     public void convertLead(Optional<Lead> leadToConvert, String[] opportunityInfo, String[] accountInfo) {
-                var newContact = new Contact(
-                leadToConvert.get().getName(),
-                leadToConvert.get().getPhoneNumber(),
-                leadToConvert.get().getEmail(),
-                leadToConvert.get().getCompanyName());
+        var newContact = new Contact(
+        leadToConvert.get().getName(),
+        leadToConvert.get().getPhoneNumber(),
+        leadToConvert.get().getEmail(),
+        leadToConvert.get().getCompanyName());
+
         //accountInfo = {industry, country, city, numOfEmployees}
         var newAccount = new Account(
-                turnStringToIndustry(accountInfo[0]),
+                leadToConvert.get().getCompanyName(),
+                accountInfo[0],
                 Integer.parseInt(accountInfo[3]),
                 accountInfo[2],
                 accountInfo[1]);
@@ -66,9 +68,13 @@ public class LeadService {
                 newAccount,
                 leadToConvert.get().getSalesRep());
 
+        newAccount.addContact(newContact);
+        newAccount.addOpportunity(newOpportunity);
         accountRepository.save(newAccount);
         opportunityRepository.save(newOpportunity);
         leadRepository.delete(leadToConvert.get());
+
+        prints.leadSuccessfullyConverted(newOpportunity);
     }
 
     public void convertLead(Optional<Lead> leadToConvert, String[] opportunityInfo, Account existingAccount) {
@@ -84,24 +90,26 @@ public class LeadService {
                 newContact,
                 existingAccount,
                 leadToConvert.get().getSalesRep());
+
         existingAccount.addContact(newContact);
         existingAccount.addOpportunity(newOpportunity);
-
         accountRepository.save(existingAccount);
         opportunityRepository.save(newOpportunity);
         leadRepository.delete(leadToConvert.get());
-    }*/
+
+        prints.leadSuccessfullyConverted(newOpportunity);
+    }
 
     public Product turnStringToProduct(String product){
 
         switch (product){
-            case "1":{
+            case "hybrid":{
                 return Product.HYBRID;
             }
-            case "2":{
+            case "flatbed":{
                 return Product.FLATBED;
             }
-            case "3":{
+            case "box":{
                 return Product.BOX;
             }
         }

@@ -34,19 +34,19 @@ public class DataLoader {
     void loadDataToOppRepository(){
         //var contact = new Contact( "Dani", 633223530, "daniRoman@gmail.com","Juanazo&Co");
         var contact = new Contact( "MArtina", "633223530", "daniRoman@gmail.com","Juanazo&Co");
-        var acount = new Account("Medical", 20, "London", "UK");
+        var acount = new Account("MedicalPlus","Medical", 20, "London", "UK");
         var sales = new SalesRep("Sara", "xsara");
 
         var contact2 = new Contact( "Juan", "623227535", "juan@gmail.com","LaCalaver");
-        var acount2 = new Account("produce", 300, "Berlin", "Germany");
+        var acount2 = new Account("ProductoresManolo","produce", 300, "Berlin", "Germany");
         var sales2 = new SalesRep("Adri", "xadri");
 
         var contact3 = new Contact( "JAcob", "636666530", "ivan@gmail.com","Interco");
-        var acount3 = new Account("ecommerce", 30, "islaTypi", "Isla feroe");
+        var acount3 = new Account("TiendaDePaco","ecommerce", 30, "islaTypi", "Isla feroe");
         var sales3 = new SalesRep("Andres", "xandres");
 
         var contact4 = new Contact( "Martin", "656666530", "martin@gmail.com","LaSalle");
-        var acount4 = new Account("ecommerce", 100, "Barcelona", "España");
+        var acount4 = new Account("TiendaDeLola","ecommerce", 100, "Barcelona", "España");
         var sales4 = new SalesRep("Dani", "xdani");
 
         accountRepository.save(acount);
@@ -72,5 +72,7 @@ public class DataLoader {
             var newLead = new Lead(faker.name().name(), faker.phoneNumber().phoneNumber(), faker.internet().emailAddress(), faker.company().name(), sales);
             leadRepository.save(newLead);
         }
+        var extraLead = new Lead(faker.name().name(), faker.phoneNumber().phoneNumber(), faker.internet().emailAddress(), "TiendaDeLola", sales);
+        leadRepository.save(extraLead);
     }
 }

@@ -6,6 +6,7 @@ import com.example.crm_project.Repository.AccountRepository;
 import com.example.crm_project.Repository.LeadRepository;
 import com.example.crm_project.utils.Commands;
 import com.example.crm_project.utils.ConsoleColors;
+import com.example.crm_project.utils.Prints;
 import com.example.crm_project.utils.Validate;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -53,6 +54,8 @@ public class CrmService {
     private AccountRepository accountRepository;
     @Autowired
     private Validate validate;
+    @Autowired
+    private Prints prints;
 
 
     void executeReportCommand() {
@@ -84,16 +87,17 @@ public class CrmService {
                 leadService.lookUpLead(id); // should check if lead exists and, if so, should print the lead's information
             }
             case CONVERT -> {
-                var id = inputService.askLeadId("convert");
+                /*var id = inputService.askLeadId("convert");
                 var leadToConvert = leadRepository.findById((long) id);
+                prints.lookUpLead(leadToConvert.get());
                 var opportunityInfo = inputService.askOpportunityInfo();
                 Optional<Account> existingAccount = accountRepository.findAccountByName(leadToConvert.get().getCompanyName());
                 if(!existingAccount.isPresent()){
                     var newAccountInfo = inputService.askNewAccountInfo();
                     leadService.convertLead(leadToConvert, opportunityInfo, newAccountInfo); //creates new contact + deletes lead + creates new opportunity + creates new account
                 }else {
-                    leadService.convertLead(leadToConvert, opportunityInfo, existingAccount); //creates new contact + deletes lead + creates new opportunity + creates new account
-                }
+                    leadService.convertLead(leadToConvert, opportunityInfo, existingAccount.get()); //creates new contact + deletes lead + creates new opportunity + creates new account
+                }*/
             }
             case CLOSE_LOST_OPPORTUNITY -> {
                 var id = inputService.askOpportunityId();

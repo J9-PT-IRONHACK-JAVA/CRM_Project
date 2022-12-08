@@ -10,10 +10,12 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.jpa.repository.Query;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -63,8 +65,8 @@ class AccountRepositoryTest {
 
         contactList.add(Account.newContact(lead));
 
-        account = accountRepository.save(new Account(Industry.ECOMMERCE, 200L, "BCN", "ESP", contactList, opportunityList));
-        account2 = accountRepository.save(new Account(Industry.ECOMMERCE, 400L, "BCN", "FRA", contactList, opportunityList2));
+        account = accountRepository.save(new Account("TiendaPaco",Industry.ECOMMERCE, 200L, "BCN", "ESP", contactList, opportunityList));
+        account2 = accountRepository.save(new Account("TiendaLola",Industry.ECOMMERCE, 400L, "BCN", "FRA", contactList, opportunityList2));
 
         opportunity = opportunityRepository.save(new Opportunity(Product.BOX, 20L,
                 Account.newContact(lead), account, salesRep));
@@ -123,5 +125,11 @@ class AccountRepositoryTest {
         Long employee = accountRepository.medianEmployeeCount();
         System.out.println(employee);
         assertEquals(300, employee);
+    }
+
+    @Test
+    void findAccountByNameTest() {
+        var existingAccount = accountRepository.findAccountByName("TiendaPaco");
+        assertEquals(existingAccount.isPresent(), true);
     }
 }
