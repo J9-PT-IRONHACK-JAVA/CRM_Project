@@ -50,8 +50,10 @@ public class LoginService {
             }
         }while (!isValidPassword);
 
+
 //        var loggedSalesRep = salesRepRepository.findSalesRepByNameAndPassword();
 //        this.setCurrentSalesRep(loggedSalesRep);
+
         System.out.println("Login successful");
     }
 
