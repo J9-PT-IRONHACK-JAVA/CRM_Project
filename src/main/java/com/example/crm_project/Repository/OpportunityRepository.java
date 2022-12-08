@@ -30,6 +30,24 @@ public interface OpportunityRepository extends JpaRepository<Opportunity, Long> 
     List<Object[]>countOpenOppByProduct();
 
 
+    //By Country
+    //A count of all Opportunities by country can be displayed by typing “Report Opportunity by Country”
+    @Query("SELECT a.country, o.decisionMaker.companyName, o.decisionMaker.email, o.decisionMaker.name, o.decisionMaker.phoneNumber, o.product, o.quantity, o.status FROM Opportunity o JOIN Account a ON o.account.id = a.id GROUP BY a.country, o.decisionMaker.companyName, o.decisionMaker.email, o.decisionMaker.name, o.decisionMaker.phoneNumber, o.product, o.quantity, o.status" )
+    List<Object[]>countOppByCountry();
+
+    //count of all CLOSED_WON Opportunities by country can be displayed by typing “Report CLOSED-WON by Country”
+    @Query("SELECT COUNT( o ) AS CLOSED_WON_COUNT ,a.country FROM Opportunity o JOIN Account a ON o.account.id = a.id WHERE o.status = 'CLOSED_WON' GROUP BY a.country" )
+    List<Object[]>countClosedWonOppByCountry();
+
+    //A count of all CLOSED_LOST Opportunities by country can be displayed by typing “Report CLOSED-LOST by Country”
+    @Query("SELECT COUNT( o ) AS CLOSED_LOST_COUNT ,a.country FROM Opportunity o JOIN Account a ON o.account.id = a.id WHERE o.status = 'CLOSED_LOST' GROUP BY a.country" )
+    List<Object[]>countClosedLostOppByCountry();
+
+    //A count of all OPEN Opportunities by country can be displayed by typing “Report OPEN by Country”
+    @Query("SELECT COUNT( o ) AS OPEN_COUNT ,a.country FROM Opportunity o JOIN Account a ON o.account.id = a.id WHERE o.status = 'OPEN' GROUP BY a.country" )
+    List<Object[]>countOpenOppByCountry();
+
+
     // * by Product
     //The mean quantity of products order can be displayed
     // ! Every method exposed here, needs to start with a @Query("query from SQL like we did on class in workbench")

@@ -73,16 +73,14 @@ class OpportunityRepositoryTest {
 
     @AfterEach
     void tearDown() {
-        opportunityRepository.deleteAll();
+        //opportunityRepository.deleteAll();
     }
 
     @Test
     void countOfOpportunitiesByProductTest() {
-        var contact = new Contact( "Dani", "633223530", "daniRoman@gmail.com","Juanazo&Co");
-        var acount = new Account("Medical", 20, "London", "UK");
-        var sales = new SalesRep("Sara", "amoAMiPerro89");
 
         var result = opportunityRepository.countOfOpportunitiesByProduct();
+        System.out.println(result);
         var actual = result.get(1)[1];
         Long l2 = Long.valueOf(2);
         assertEquals(l2, actual);
@@ -111,7 +109,44 @@ class OpportunityRepositoryTest {
         Long l2 = Long.valueOf(1);
         assertEquals(l2, actual);
     }
+    //BY country
+    @Test
+    void countOppByCountryTest(){
 
+        var result = opportunityRepository.countOppByCountry();
+        System.out.println(result);
+        var actualOpp = result.get(0)[0];
+        var actualOpp2 = result.get(1)[0];
+        var actualOpp3 = result.get(2)[0];
 
+        assertEquals("UK", actualOpp);
+        assertEquals("Germany", actualOpp2);
+        assertEquals("España", actualOpp3);
+    }
+    @Test
+    void countClosedWonOppByCountryTest(){
 
+        var result = opportunityRepository.countClosedWonOppByCountry();
+        System.out.println(result);
+        var actual = result.get(0)[0];
+        Long l2 = Long.valueOf(1);
+        assertEquals(l2, actual);
+    };
+
+    @Test
+    void countClosedLostOppByCountryTest(){
+
+        var result = opportunityRepository.countClosedLostOppByCountry();
+        var actual = result.get(0)[1];
+        assertEquals("Germany", actual);
+    };
+
+    @Test
+    void countOpenOppByCountryTest(){
+
+        var result = opportunityRepository.countOpenOppByCountry();
+        var actual = result.get(0)[1];
+        System.out.println(actual);
+        assertEquals("UK", actual);
+    }
 }

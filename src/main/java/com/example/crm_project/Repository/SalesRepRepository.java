@@ -8,7 +8,7 @@ import java.util.List;
 //@Repository
 public interface SalesRepRepository extends JpaRepository<SalesRep, Long> {
 
-    boolean checkIfUsernameExists();
+    /*boolean checkIfUsernameExists();
 
     String findPasswordByUsername(String userName, String password);
 
