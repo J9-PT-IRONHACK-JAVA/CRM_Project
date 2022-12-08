@@ -14,7 +14,7 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 
 @Entity
-@Table( name = "salesReps")
+@Table(name = "salesReps")
 public class SalesRep {
 
     @Id
@@ -22,7 +22,7 @@ public class SalesRep {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column (name = "rep_name")
+    @Column(name = "rep_name")
     private String name;
 
     @OneToMany(mappedBy = "salesRep")
@@ -41,6 +41,13 @@ public class SalesRep {
     }
 
     // Constructor => Save a SalesRep with X name with leads list and opportunities list
+    public SalesRep(String name) {
+        this.name = name;
+        this.leads = new ArrayList<>();
+        this.opportunities = new ArrayList<>();
+    }
+
+    // Constructor => Save a SalesRep with X name with leads list and opportunities list + password
     public SalesRep(String name, String password) {
         this.name = name;
         this.leads = new ArrayList<>();
@@ -49,6 +56,13 @@ public class SalesRep {
     }
 
     // Constructor => Save a SalesRep with X name, X leads list, X opportunities list
+    public SalesRep(String name, List<Lead> leads, List<Opportunity> opportunities) {
+        this.name = name;
+        this.leads = leads;
+        this.opportunities = opportunities;
+    }
+
+    // Constructor => Save a SalesRep with X name, X leads list, X opportunities list, + password
     public SalesRep(String name, List<Lead> leads, List<Opportunity> opportunities, String password) {
         this.name = name;
         this.leads = leads;
@@ -56,6 +70,10 @@ public class SalesRep {
         this.password = password;
     }
 
-
+    @Override
+    public String toString() {
+        return "id = " + id + ", name = " + name;
+        //"\n Leads List \n" + leads + "\n Opportunity List \n" + opportunities;
+    }
 
 }

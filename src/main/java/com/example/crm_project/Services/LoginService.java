@@ -37,18 +37,18 @@ public class LoginService {
         do {
             userName = inputService.askUserName();
             isValidUserName = validate.isValidUserName(userName);
-            if (isValidUserName == false){
+            if (!isValidUserName){
                 printWithColor("Username does not exist. Please try again", ConsoleColors.RED);
             }
-        }while (isValidUserName == false);
+        }while (!isValidUserName);
 
         do {
             password = inputService.askPassword();
-            isValidPassword = validate.isValidPassword(userName, password);
-            if (isValidPassword == false){
+            isValidPassword = validate.isValidPassword(password);
+            if (!isValidPassword){
                 printWithColor("Password does not match with username. Please try again", ConsoleColors.RED);
             }
-        }while (isValidPassword == false);
+        }while (!isValidPassword);
 
 //        var loggedSalesRep = salesRepRepository.findSalesRepByNameAndPassword();
 //        this.setCurrentSalesRep(loggedSalesRep);

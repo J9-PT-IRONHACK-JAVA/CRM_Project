@@ -8,15 +8,13 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 @Getter
 @Setter
 @NoArgsConstructor
 
 @Entity
-@Table (name = "accounts")
+@Table(name = "accounts")
 
 public class Account {
 
@@ -68,8 +66,6 @@ public class Account {
         this.opportunities = opportunities;
     }
 
-
-
     public void setIndustry(String industry) {
         industry = industry.toUpperCase();
         if (industry.equals("PRODUCE")
@@ -91,9 +87,16 @@ public class Account {
                "\n Contact List \n" + getContacts() + "\n Opportunity List \n" + getOpportunities();
     }
 
-    public void addContact(Contact newContact) {
-        this.contacts.add(newContact);
+    public static Contact newContact(Lead lead) {
+        Contact contact = new Contact(lead.getName(), lead.getPhoneNumber(), lead.getEmail(), lead.getCompanyName());
+        System.out.println("Lead converted into a new contact: ");
+        System.out.println(contact);
+        return contact;
     }
+
+//    public void addContact(Lead newContact) {
+//        this.contacts.add(newContact);
+//    }
 
     public void addOpportunity(Opportunity newOpportunity) {
         this.opportunities.add(newOpportunity);
