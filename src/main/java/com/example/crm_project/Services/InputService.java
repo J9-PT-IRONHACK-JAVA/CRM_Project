@@ -12,7 +12,6 @@ import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.io.IOException;
 import java.util.Scanner;
 
 import static com.example.crm_project.utils.ConsoleColors.printWithColor;
@@ -25,15 +24,12 @@ public class InputService {
     private final Scanner prompt;
 
 
-
     @Autowired
     private Validate validate;
 
     public InputService() {
         this.prompt = new Scanner(System.in);
     }
-
-
 
 
     public String askSalesRepInfo() {
@@ -58,13 +54,13 @@ public class InputService {
         } while (true);
     }
 
-    public String[] askAccountInfo() {
+    public String[] askNewAccountInfo() {
         var questionIndustry = "Please select the industry associated to the contact's organization:\n" +
-                "1) PRODUCE\n" +
-                "2) ECOMMERCE\n" +
-                "3) MANUFACTURING\n" +
-                "4) MEDICAL\n" +
-                "5) OTHER";
+                               "1) PRODUCE\n" +
+                               "2) ECOMMERCE\n" +
+                               "3) MANUFACTURING\n" +
+                               "4) MEDICAL\n" +
+                               "5) OTHER";
         var questionCountry = "Now enter the country associated to this new opportunity";
         var questionCity = "Now enter the city associated to this new opportunity";
         var questionNumberOfEmployees = "Please enter the number of employees associated to the contact's organization";
@@ -92,7 +88,7 @@ public class InputService {
         do {
             printWithColor(questionIndustry, ConsoleColors.WHITE_BRIGHT);
             input = prompt.nextLine();
-            switch (input){
+            switch (input) {
                 case "1" -> {
                     input = "produce";
                     return input;
@@ -115,14 +111,14 @@ public class InputService {
                 }
                 default -> printWithColor("Please try a valid option (1, 2, 3, 4 or 5)", ConsoleColors.RED);
             }
-        }while (true);
+        } while (true);
     }
 
     public String[] askOpportunityInfo() {
         var questionProduct = "Please select the product associated to this new opportunity:\n" +
-                "1) HYBRID\n" +
-                "2) FLATBED\n" +
-                "3) BOX";
+                              "1) HYBRID\n" +
+                              "2) FLATBED\n" +
+                              "3) BOX";
         var questionNumberOfTrucks = "Now enter the number of trucks associated to this new opportunity";
         boolean isValidNumberOfTrucks;
 
@@ -146,7 +142,7 @@ public class InputService {
         do {
             printWithColor(questionProduct, ConsoleColors.WHITE_BRIGHT);
             input = prompt.nextLine();
-            switch (input){
+            switch (input) {
                 case "1" -> {
                     input = "hybrid";
                     return input;
@@ -161,12 +157,11 @@ public class InputService {
                 }
                 default -> printWithColor("Please try a valid option (1, 2 or 3)", ConsoleColors.RED);
             }
-        }while (true);
+        } while (true);
     }
 
 
-
-    public int askLeadId(String whatToDo){
+    public int askLeadId(String whatToDo) {
         var questionLeadId = "Please enter the id of the lead you want to " + whatToDo;
 
         do {

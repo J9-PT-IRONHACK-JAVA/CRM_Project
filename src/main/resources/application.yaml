@@ -5,7 +5,7 @@ spring:
     password: 1r0nh4ck3r
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
-    show-sql: true #show commands on terminal that are being executed
+#    show-sql: true #show commands on terminal that are being executed
     #generate-ddl: true # => como el update de abajo
     hibernate:
-      ddl-auto: create # update => para simplemente trabajar sin hacer un drop de la tabla
+      ddl-auto: update # update => para simplemente trabajar sin hacer un drop de la tabla

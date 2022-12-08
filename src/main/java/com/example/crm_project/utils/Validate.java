@@ -48,6 +48,7 @@ public class Validate {
     }
 
     public boolean isValidUserName(String userName) {
+
         /*if(!salesRepRepository.checkIfUsernameExists()){
             return false;
         }*/
@@ -60,5 +61,8 @@ public class Validate {
             return false;
         }*/
         return true;
+
+        return salesRepRepository.existsByUsername(userName);
     }
+
 }
