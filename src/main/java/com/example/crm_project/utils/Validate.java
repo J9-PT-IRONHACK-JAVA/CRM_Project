@@ -49,20 +49,11 @@ public class Validate {
     }
 
     public boolean isValidUserName(String userName) {
-
-//        if(!salesRepRepository.checkIfUsernameExists()){
-//            return false;
-//        }
-        return true;
-//        return salesRepRepository.existsByUsername(userName);
+        return salesRepRepository.existsByUsername(userName);
     }
 
     public boolean isValidPassword(String userName, String password) {
-//        SalesRep user = salesRepRepository.findByUsername(userName);
-//        if(!password.equals(user.getPassword())){
-//            return false;
-//        }
-        return true;
+        return salesRepRepository.existsByPassword(userName,  password);
     }
 
 }

@@ -34,6 +34,7 @@ public class LoginService {
         prints.printLogin();
         String userName;
         String password;
+        String currentUser;
         do {
             userName = inputService.askUserName();
             isValidUserName = validate.isValidUserName(userName);
@@ -50,10 +51,8 @@ public class LoginService {
             }
         }while (!isValidPassword);
 
-
-//        var loggedSalesRep = salesRepRepository.findSalesRepByNameAndPassword();
-//        this.setCurrentSalesRep(loggedSalesRep);
-
+        var loggedSalesRep = salesRepRepository.getSalesRepByName(userName);
+        this.setCurrentSalesRep(loggedSalesRep);
         System.out.println("Login successful");
     }
 
