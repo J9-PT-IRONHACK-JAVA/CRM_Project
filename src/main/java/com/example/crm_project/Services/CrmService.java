@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
 import java.util.Scanner;
 
 import static com.example.crm_project.utils.ConsoleColors.printWithColor;
@@ -84,14 +85,15 @@ public class CrmService {
             }
             case CONVERT -> {
                 var id = inputService.askLeadId("convert");
-//                var leadToConvert = leadRepository.findById((long) id);
-//                var opportunityInfo = inputService.askOpportunityInfo();
-//                var existingAccount = accountRepository.findAccountByName(leadToConvert.get().getCompanyName());
-//                if(existingAccount == null){
-//                    var newAccountInfo = inputService.askNewAccountInfo();
-//                    leadService.convertLead(leadToConvert, opportunityInfo, newAccountInfo); //creates new contact + deletes lead + creates new opportunity + creates new account
-//                }
-//                leadService.convertLead(leadToConvert, opportunityInfo, existingAccount); //creates new contact + deletes lead + creates new opportunity + creates new account
+                var leadToConvert = leadRepository.findById((long) id);
+                var opportunityInfo = inputService.askOpportunityInfo();
+                Optional<Account> existingAccount = accountRepository.findAccountByName(leadToConvert.get().getCompanyName());
+                if(!existingAccount.isPresent()){
+                    var newAccountInfo = inputService.askNewAccountInfo();
+                    leadService.convertLead(leadToConvert, opportunityInfo, newAccountInfo); //creates new contact + deletes lead + creates new opportunity + creates new account
+                }else {
+                    leadService.convertLead(leadToConvert, opportunityInfo, existingAccount); //creates new contact + deletes lead + creates new opportunity + creates new account
+                }
             }
             case CLOSE_LOST_OPPORTUNITY -> {
                 var id = inputService.askOpportunityId();
