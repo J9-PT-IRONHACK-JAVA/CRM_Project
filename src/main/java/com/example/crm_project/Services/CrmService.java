@@ -103,7 +103,7 @@ public class CrmService {
             }
             case NEW_SALESREP -> {
                 var salesRepInfo = inputService.askSalesRepInfo();
-                salesRepService.createNewSalesRep();
+                salesRepService.createNewSalesRep(salesRepInfo);
             }
             default -> {
                 printWithColor("Command not recognized! Enter 'help' to see available commands.", ConsoleColors.RED);

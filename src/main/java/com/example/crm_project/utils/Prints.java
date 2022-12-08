@@ -1,6 +1,7 @@
 package com.example.crm_project.utils;
 
 import com.example.crm_project.Model.Lead;
+import com.example.crm_project.Model.SalesRep;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -39,9 +40,7 @@ public class Prints {
                 Email: %s
                 Company name: %s
                 Sales Rep: %s
-                
-                New lead was successfully created!
-             
+                =======================             
                 """, lead.getId(),
                     lead.getName(),
                     lead.getPhoneNumber(),
@@ -84,5 +83,31 @@ public class Prints {
                 
                 TruckyCRM Login
                 """);
+    }
+
+    public void newSalesRepSuccessfullyCreated(SalesRep newSalesRep) {
+        System.out.printf("""
+                *SalesRep specifications*
+                Name: %s
+                Password: %s
+                
+                New SalesRep was successfully created!
+                """, newSalesRep.getName(),
+                newSalesRep.getPassword());
+    }
+
+    public void showSalesRep(List<SalesRep> salesRepList) {
+        var count = 0;
+        for(SalesRep salesRep: salesRepList){
+            System.out.printf("""
+                SalesRep Id: %s
+                Name: %s
+                ====================
+                """,
+                salesRep.getId(),
+                salesRep.getName());
+            count++;
+        }
+        System.out.println("Total: " + count);
     }
 }

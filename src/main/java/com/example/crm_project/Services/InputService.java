@@ -32,13 +32,17 @@ public class InputService {
     }
 
 
-    public String askSalesRepInfo() {
-        var questionNewSalesRepName = "You are about to create a new SalesRep. Please enter the new sales rep name";
+    public String[] askSalesRepInfo() {
+        var questionNewSalesRepName = "You are about to create a new SalesRep. Please enter the new SalesRep username";
+        var questionNewSalesRepPassword = "Please enter the new SalesRep password";
 
         printWithColor(questionNewSalesRepName, ConsoleColors.WHITE_BRIGHT);
         var newSalesRepName = prompt.nextLine();
 
-        return newSalesRepName;
+        printWithColor(questionNewSalesRepPassword, ConsoleColors.WHITE_BRIGHT);
+        var newSalesRepPassword = prompt.nextLine();
+
+        return new String[]{newSalesRepName, newSalesRepPassword};
     }
 
     public int askOpportunityId() {

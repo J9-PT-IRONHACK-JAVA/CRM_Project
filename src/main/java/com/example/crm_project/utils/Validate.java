@@ -1,5 +1,6 @@
 package com.example.crm_project.utils;
 
+import com.example.crm_project.Model.SalesRep;
 import com.example.crm_project.Repository.SalesRepRepository;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
