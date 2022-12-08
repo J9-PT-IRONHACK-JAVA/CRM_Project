@@ -43,6 +43,8 @@ public class Commands {
             ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDFE0 close-won" +
             "\n" +
             ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDFE0 report" +
+            "\n" + "\n"+
+            ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDFE0 exit" +
             "\n" + "\n"
             //ConsoleColors.CYAN_BOLD_BRIGHT + " 🤔 What do you wanna do? 🤔" + ConsoleColors.RESET;
  ;
@@ -66,8 +68,9 @@ public class Commands {
                     "\n" +
                     ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDFE0 Quantity States" +
                     "\n" +
-                    ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDFE0 Opportunity States\n\n";
-
+                    ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDFE0 Opportunity States\n"+
+                    "\n" +
+                    ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDFE0 back\n\n";
 }
 
 

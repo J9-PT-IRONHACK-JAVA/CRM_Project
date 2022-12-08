@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
 
+import static com.example.crm_project.utils.ConsoleColors.printWithColor;
 import static com.example.crm_project.utils.TypeWriter.typewriterFromString;
 
 @Data
@@ -17,18 +18,17 @@ public class ReportInputService {
 
     public void mainRepo(Scanner sc){
 
-        boolean exit;
+        boolean back = false;
         String input;
-        exit = false;
-        System.out.println(ConsoleColors.BLUE_BOLD_BRIGHT + "Enter Kind of functionality to report");
         do{
+            System.out.println(ConsoleColors.BLUE_BOLD_BRIGHT + "Enter Kind of functionality to report");
             input = sc.nextLine().trim().toLowerCase();
-            exit = mainRepoSwitch(input);
-        }while(!exit);
+            back = mainRepoSwitch(input);
+        }while(!back);
 
     }
     public boolean mainRepoSwitch(String input){
-        boolean exit = false;
+        boolean back = false;
         switch(input){
                 case "help":
                     typewriterFromString(Commands.mainReportMessage, 0);
@@ -43,19 +43,19 @@ public class ReportInputService {
                     break;
                 case "industry":
                     break;
-                case "EmployeeCount States":
+                case "employeeCount states":
                     break;
-                case "Quantity States":
+                case "quantity states":
                     break;
-                case "Opportunity States":
+                case "opportunity states":
                     break;
-                case "exit":
-                    exit = true;
+                case "back":
+                     back = true;
                     break;
                 default:
-                    System.out.println("Please Enter a correct command or enter ( help ) to see the avaible commands");
+                    printWithColor("Command not recognized! Enter 'help' to see available commands.", ConsoleColors.RED);
                     break;
             }
-            return exit;
+            return back;
     }
 }
