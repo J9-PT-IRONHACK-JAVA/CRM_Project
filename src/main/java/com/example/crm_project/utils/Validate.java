@@ -1,11 +1,13 @@
 package com.example.crm_project.utils;
 
 import com.example.crm_project.Model.SalesRep;
+import com.example.crm_project.Repository.LeadRepository;
 import com.example.crm_project.Repository.SalesRepRepository;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.NoSuchElementException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -15,6 +17,8 @@ public class Validate {
 
     @Autowired
     private SalesRepRepository salesRepRepository;
+    @Autowired
+    private LeadRepository leadRepository;
 
     public static final Pattern VALID_PHONENUMBER_REGEX =
             Pattern.compile("\\A[0-9]{3}[0-9]{3}[0-9]{3}\\z", Pattern.CASE_INSENSITIVE);
@@ -39,8 +43,11 @@ public class Validate {
 
 
     public boolean leadIdExists(String id) {
-//        TODO method that checks if lead id exists in current database
-        return true;
+        var lead = leadRepository.findById(Long.valueOf(id));
+        if(lead.isPresent()){
+            return true;
+        }
+        return false;
     }
 
     public boolean opportunityIdExists(String id) {

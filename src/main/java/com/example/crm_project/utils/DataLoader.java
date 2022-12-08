@@ -1,17 +1,17 @@
 package com.example.crm_project.utils;
 
-import com.example.crm_project.Model.Account;
-import com.example.crm_project.Model.Contact;
-import com.example.crm_project.Model.Opportunity;
-import com.example.crm_project.Model.SalesRep;
+import com.example.crm_project.Model.*;
 import com.example.crm_project.Repository.AccountRepository;
+import com.example.crm_project.Repository.LeadRepository;
 import com.example.crm_project.Repository.OpportunityRepository;
 import com.example.crm_project.Repository.SalesRepRepository;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import net.datafaker.Faker;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.example.crm_project.Enums.Product.*;
@@ -25,6 +25,10 @@ public class DataLoader {
     private final OpportunityRepository opportunityRepository;
     private final AccountRepository accountRepository;
     private final SalesRepRepository salesRepRepository;
+
+    private final LeadRepository leadRepository;
+
+    private final Faker faker;
 
     @Bean
     void loadDataToOppRepository(){
@@ -54,7 +58,7 @@ public class DataLoader {
         salesRepRepository.save(sales3);
         salesRepRepository.save(sales4);
 
-
+        //OPPORTUNITIES CREATION
         var oportunityList = List.of(
                 new Opportunity(HYBRID, 2, contact, OPEN, acount, sales),
                 new Opportunity(FLATBED, 3, contact2, CLOSED_LOST, acount2, sales4),
@@ -62,5 +66,11 @@ public class DataLoader {
                 new Opportunity(FLATBED, 3, contact4, CLOSED_WON, acount4, sales4)
         );
         opportunityRepository.saveAll(oportunityList);
+
+        //LEADS CREATION
+        for (int i = 0; i < 5; i++) {
+            var newLead = new Lead(faker.name().name(), faker.phoneNumber().phoneNumber(), faker.internet().emailAddress(), faker.company().name(), sales);
+            leadRepository.save(newLead);
+        }
     }
 }

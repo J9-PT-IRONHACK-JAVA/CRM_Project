@@ -43,7 +43,7 @@ public class LeadService {
 
     public void lookUpLead(long id) {
         var lead = leadRepository.findById(id);
-        prints.lookUpLead(lead);
+        prints.lookUpLead(lead.get());
     }
 /*
     public void convertLead(Optional<Lead> leadToConvert, String[] opportunityInfo, String[] accountInfo) {
