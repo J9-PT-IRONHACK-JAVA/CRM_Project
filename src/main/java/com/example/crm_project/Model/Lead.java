@@ -14,7 +14,7 @@ import javax.validation.constraints.NotNull;
 public class Lead {
 
     @Id
-    @NotNull
+    //@NotNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
