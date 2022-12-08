@@ -2,6 +2,7 @@ package com.example.crm_project.utils;
 
 import com.example.crm_project.Model.SalesRep;
 import com.example.crm_project.Repository.LeadRepository;
+import com.example.crm_project.Repository.OpportunityRepository;
 import com.example.crm_project.Repository.SalesRepRepository;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,8 @@ public class Validate {
     private SalesRepRepository salesRepRepository;
     @Autowired
     private LeadRepository leadRepository;
+    @Autowired
+    private OpportunityRepository opportunityRepository;
 
     public static final Pattern VALID_PHONENUMBER_REGEX =
             Pattern.compile("\\A[0-9]{3}[0-9]{3}[0-9]{3}\\z", Pattern.CASE_INSENSITIVE);
@@ -51,8 +54,11 @@ public class Validate {
     }
 
     public boolean opportunityIdExists(String id) {
-//        TODO method that checks if opportunity id exists in current database
-        return true;
+        var opportunity = opportunityRepository.findById(Long.valueOf(id));
+        if(opportunity.isPresent()){
+            return true;
+        }
+        return false;
     }
 
     public boolean isValidUserName(String userName) {
