@@ -73,16 +73,11 @@ class OpportunityRepositoryTest {
 
     @AfterEach
     void tearDown() {
-        //opportunityRepository.deleteAll();
+        opportunityRepository.deleteAll();
     }
 
     @Test
     void countOfOpportunitiesByProductTest() {
-
-        var contact = new Contact( "Dani", "633223530", "daniRoman@gmail.com","Juanazo&Co");
-        var acount = new Account("Medical", 20, "London", "UK");
-        var sales = new SalesRep("Sara", "xxxx");
-
 
         var result = opportunityRepository.countOfOpportunitiesByProduct();
         System.out.println(result);

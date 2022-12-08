@@ -31,6 +31,11 @@ public interface SalesRepRepository extends JpaRepository<SalesRep, Long> {
     @Query("SELECT COUNT(u) > 0 FROM SalesRep u WHERE u.name = :userName")
     boolean existsByUsername(@Param("userName") String userName);
 
-    @Query("SELECT COUNT(u) > 0 FROM SalesRep u WHERE u.password = :password")
-    boolean existsByPassword(@Param("password") String password);
+    //@Query("SELECT COUNT(u) > 0 FROM SalesRep u WHERE u.password = :password")
+    @Query("SELECT COUNT(u) > 0 FROM SalesRep u WHERE u.name = ?1 AND u.password = ?2")
+    boolean existsByPassword(String userName, String password);
+    //"SELECT COUNT(u) > 0 FROM SalesRep u WHERE u.name = ?1 AND u.password = ?2"
+
+    @Query("FROM SalesRep s WHERE s.name = ?1")
+    SalesRep getSalesRepByName(String name);
 }

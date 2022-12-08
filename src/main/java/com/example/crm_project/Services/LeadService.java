@@ -45,56 +45,52 @@ public class LeadService {
         var lead = leadRepository.findById(id);
         prints.lookUpLead(lead);
     }
+/*
+    public void convertLead(Optional<Lead> leadToConvert, String[] opportunityInfo, String[] accountInfo) {
+                var newContact = new Contact(
+                leadToConvert.get().getName(),
+                leadToConvert.get().getPhoneNumber(),
+                leadToConvert.get().getEmail(),
+                leadToConvert.get().getCompanyName());
+        //accountInfo = {industry, country, city, numOfEmployees}
+        var newAccount = new Account(
+                turnStringToIndustry(accountInfo[0]),
+                Integer.parseInt(accountInfo[3]),
+                accountInfo[2],
+                accountInfo[1]);
 
-//    public void convertLead(Optional<Lead> leadToConvert, String[] opportunityInfo, String[] accountInfo) {
-//
-//        var newContact = new Contact(
-//                leadToConvert.get().getName(),
-//                leadToConvert.get().getPhoneNumber(),
-//                leadToConvert.get().getEmail(),
-//                leadToConvert.get().getCompanyName());
-//
-////        accountInfo = {industry, country, city, numOfEmployees}
-//        var newAccount = new Account(
-//                turnStringToIndustry(accountInfo[0]),
-//                Integer.parseInt(accountInfo[3]),
-//                accountInfo[2],
-//                accountInfo[1]);
-//
-//        var newOpportunity = new Opportunity(
-//                turnStringToProduct(opportunityInfo[0]),
-//                Integer.parseInt(opportunityInfo[1]),
-//                newContact,
-//                newAccount,
-//                leadToConvert.get().getSalesRep());
-//
-//        accountRepository.save(newAccount);
-//        opportunityRepository.save(newOpportunity);
-//        leadRepository.delete(leadToConvert.get());
-//    }
-//
-//    public void convertLead(Optional<Lead> leadToConvert, String[] opportunityInfo, Account existingAccount) {
-//
-//        var newContact = new Contact(
-//                leadToConvert.get().getName(),
-//                leadToConvert.get().getPhoneNumber(),
-//                leadToConvert.get().getEmail(),
-//                leadToConvert.get().getCompanyName());
-//
-//        var newOpportunity = new Opportunity(
-//                turnStringToProduct(opportunityInfo[0]),
-//                Integer.parseInt(opportunityInfo[1]),
-//                newContact,
-//                existingAccount,
-//                leadToConvert.get().getSalesRep());
-//
-//        existingAccount.addContact(newContact);
-//        existingAccount.addOpportunity(newOpportunity);
-//
-//        accountRepository.save(existingAccount);
-//        opportunityRepository.save(newOpportunity);
-//        leadRepository.delete(leadToConvert.get());
-//    }
+        var newOpportunity = new Opportunity(
+                turnStringToProduct(opportunityInfo[0]),
+                Integer.parseInt(opportunityInfo[1]),
+                newContact,
+                newAccount,
+                leadToConvert.get().getSalesRep());
+
+        accountRepository.save(newAccount);
+        opportunityRepository.save(newOpportunity);
+        leadRepository.delete(leadToConvert.get());
+    }
+
+    public void convertLead(Optional<Lead> leadToConvert, String[] opportunityInfo, Account existingAccount) {
+        var newContact = new Contact(
+                leadToConvert.get().getName(),
+                leadToConvert.get().getPhoneNumber(),
+                leadToConvert.get().getEmail(),
+                leadToConvert.get().getCompanyName());
+
+        var newOpportunity = new Opportunity(
+                turnStringToProduct(opportunityInfo[0]),
+                Integer.parseInt(opportunityInfo[1]),
+                newContact,
+                existingAccount,
+                leadToConvert.get().getSalesRep());
+        existingAccount.addContact(newContact);
+        existingAccount.addOpportunity(newOpportunity);
+
+        accountRepository.save(existingAccount);
+        opportunityRepository.save(newOpportunity);
+        leadRepository.delete(leadToConvert.get());
+    }*/
 
     public Product turnStringToProduct(String product){
 

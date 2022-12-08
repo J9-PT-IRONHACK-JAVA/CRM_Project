@@ -124,4 +124,11 @@ class SalesRepRepositoryTest {
         assertEquals("Pepito", optionalList.get(0)[0]);
         assertEquals(1L, optionalList.get(0)[1]);
     }
+
+    @Test
+    void existsByPasswordTest(){
+        var result = salesRepRepository.existsByPassword("Dani", "xdani");
+        System.out.println(result);
+        assertTrue(result);
+    }
 }

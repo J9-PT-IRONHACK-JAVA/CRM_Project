@@ -34,6 +34,7 @@ public class LoginService {
         prints.printLogin();
         String userName;
         String password;
+        String currentUser;
         do {
             userName = inputService.askUserName();
             isValidUserName = validate.isValidUserName(userName);
@@ -44,16 +45,14 @@ public class LoginService {
 
         do {
             password = inputService.askPassword();
-            isValidPassword = validate.isValidPassword(password);
+            isValidPassword = validate.isValidPassword(userName, password);
             if (!isValidPassword){
                 printWithColor("Password does not match with username. Please try again", ConsoleColors.RED);
             }
         }while (!isValidPassword);
 
-
-//        var loggedSalesRep = salesRepRepository.findSalesRepByNameAndPassword();
-//        this.setCurrentSalesRep(loggedSalesRep);
-
+        var loggedSalesRep = salesRepRepository.getSalesRepByName(userName);
+        this.setCurrentSalesRep(loggedSalesRep);
         System.out.println("Login successful");
     }
 

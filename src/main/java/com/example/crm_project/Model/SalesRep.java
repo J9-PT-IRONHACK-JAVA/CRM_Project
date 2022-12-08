@@ -40,9 +40,6 @@ public class SalesRep {
 
     }
 
-    public SalesRep(String name) {
-        this.name = name;
-    }
 
     // Constructor => Save a SalesRep with X name with leads list and opportunities list
     public SalesRep(String name) {
