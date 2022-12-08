@@ -72,7 +72,7 @@ public class SalesRep {
 
     @Override
     public String toString() {
-        return "SalesRep: id = " + id + ", name = " + name;
+        return "id = " + id + ", name = " + name;
         //"\n Leads List \n" + leads + "\n Opportunity List \n" + opportunities;
     }
 
