@@ -1,5 +1,6 @@
 package com.example.crm_project.utils;
 
+import com.example.crm_project.Model.SalesRep;
 import com.example.crm_project.Repository.SalesRepRepository;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,20 +50,19 @@ public class Validate {
 
     public boolean isValidUserName(String userName) {
 
-        /*if(!salesRepRepository.checkIfUsernameExists()){
-            return false;
-        }*/
+//        if(!salesRepRepository.checkIfUsernameExists()){
+//            return false;
+//        }
         return true;
+//        return salesRepRepository.existsByUsername(userName);
     }
 
     public boolean isValidPassword(String userName, String password) {
-        /*var correctPassword = salesRepRepository.findPasswordByUsername(userName, password);
-        if(!password.equals(correctPassword)){
-            return false;
-        }*/
+//        SalesRep user = salesRepRepository.findByUsername(userName);
+//        if(!password.equals(user.getPassword())){
+//            return false;
+//        }
         return true;
-
-        return salesRepRepository.existsByUsername(userName);
     }
 
 }

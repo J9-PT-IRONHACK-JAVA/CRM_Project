@@ -44,7 +44,7 @@ public class LoginService {
 
         do {
             password = inputService.askPassword();
-            isValidPassword = validate.isValidPassword(password);
+            isValidPassword = validate.isValidPassword(userName, password);
             if (!isValidPassword){
                 printWithColor("Password does not match with username. Please try again", ConsoleColors.RED);
             }

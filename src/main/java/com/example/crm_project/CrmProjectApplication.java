@@ -18,7 +18,7 @@ public class CrmProjectApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        //menu.mainMenu();
+        menu.mainMenu();
     }
 
 
