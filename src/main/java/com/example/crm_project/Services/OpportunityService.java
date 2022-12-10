@@ -37,27 +37,31 @@ public class OpportunityService {
     }
 
     public void showOpportunities() {
-//        var count = 0;
-//        var oppList = opportunityRepository.findAll();
-//        for(Opportunity opportunity: oppList){
-//            System.out.printf("""
-//                *Lead specifications*
-//                Lead Id: %s
-//                Name: %s
-//                Phone number: %s
-//                Email: %s
-//                Company name: %s
-//                Sales Rep: %s
-//                =======================
-//                """, lead.getId(),
-//                    lead.getName(),
-//                    lead.getPhoneNumber(),
-//                    lead.getEmail(),
-//                    lead.getCompanyName(),
-//                    lead.getSalesRep().getName());
-//            count++;
-//        }
-//        System.out.println("Total: " + count);
+        var count = 0;
+        var oppList = opportunityRepository.findAll();
+        for(Opportunity opportunity: oppList){
+            System.out.printf("""
+                *Opportunity specifications*
+                Opportunity Id: %s
+                Product: %s
+                Quantity: %d
+                Decision maker: %s
+                Account: %s
+                SalesRep: %s
+                Status: %s
+                =============================
+             
+                """,
+                    opportunity.getId(),
+                    opportunity.getProduct().name(),
+                    opportunity.getQuantity(),
+                    opportunity.getDecisionMaker().getName(),
+                    opportunity.getDecisionMaker().getCompanyName(),
+                    opportunity.getSalesRep().getName(),
+                    opportunity.getStatus().name());
+            count++;
+        }
+        System.out.println("Total: " + count + "\n");
     }
 
     public void mainOpp(String logedUser, Scanner sc){

@@ -35,7 +35,7 @@ public class DataLoader {
         //var contact = new Contact( "Dani", 633223530, "daniRoman@gmail.com","Juanazo&Co");
         var contact = new Contact( "MArtina", "633223530", "daniRoman@gmail.com","Juanazo&Co");
         var acount = new Account("MedicalPlus","Medical", 20, "London", "UK");
-        var sales = new SalesRep("Sara", "xsara");
+        var sales = new SalesRep("Sara", "amoAMiPerro");
 
         var contact2 = new Contact( "Juan", "623227535", "juan@gmail.com","LaCalaver");
         var acount2 = new Account("ProductoresManolo","produce", 300, "Berlin", "Germany");

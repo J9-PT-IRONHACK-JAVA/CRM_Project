@@ -53,7 +53,7 @@ public class LoginService {
 
         var loggedSalesRep = salesRepRepository.getSalesRepByName(userName);
         this.setCurrentSalesRep(loggedSalesRep);
-        System.out.println("Login successful");
+        System.out.println("\nLogin successful\n");
 
         return userName;
     }

@@ -81,7 +81,7 @@ public class Prints {
     public void printLogin() {
         System.out.println("""
                 
-                TruckyCRM Login
+                LEADGEN CRM Login
                 """);
     }
 
