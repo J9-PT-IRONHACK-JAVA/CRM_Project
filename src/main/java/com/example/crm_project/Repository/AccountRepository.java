@@ -60,6 +60,5 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
     @Query("SELECT AVG(a.employeeCount) FROM Account a")
     Long medianEmployeeCount();
     @Query("FROM Account a WHERE a.companyName = ?1")
-    Optional<Account> findAccountByName(String companyName);
-
+    Optional<Account> findAccountByCompanyName(String companyName);
 }

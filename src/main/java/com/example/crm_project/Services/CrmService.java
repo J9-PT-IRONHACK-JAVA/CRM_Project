@@ -83,27 +83,31 @@ public class CrmService {
                 salesRepService.showSalesRep();
             }
             case LOOKUP_LEAD -> {
+                leadService.showLeads();
                 var id = inputService.askLeadId("lookup");
                 leadService.lookUpLead(id); // should check if lead exists and, if so, should print the lead's information
             }
             case CONVERT -> {
-                /*var id = inputService.askLeadId("convert");
+                leadService.showLeads();
+                var id = inputService.askLeadId("convert");
                 var leadToConvert = leadRepository.findById((long) id);
                 prints.lookUpLead(leadToConvert.get());
                 var opportunityInfo = inputService.askOpportunityInfo();
-                Optional<Account> existingAccount = accountRepository.findAccountByName(leadToConvert.get().getCompanyName());
-                if(!existingAccount.isPresent()){
+                Optional<Account> existingAccount = accountRepository.findAccountByCompanyName(leadToConvert.get().getCompanyName());
+                if(existingAccount.isEmpty()){
                     var newAccountInfo = inputService.askNewAccountInfo();
                     leadService.convertLead(leadToConvert, opportunityInfo, newAccountInfo); //creates new contact + deletes lead + creates new opportunity + creates new account
                 }else {
                     leadService.convertLead(leadToConvert, opportunityInfo, existingAccount.get()); //creates new contact + deletes lead + creates new opportunity + creates new account
-                }*/
+                }
             }
             case CLOSE_LOST_OPPORTUNITY -> {
+                opportunityService.showOpportunities();
                 var id = inputService.askOpportunityId();
                 opportunityService.closeOpportunity(id, Status.CLOSED_LOST); //edites opportunity status to enum CLOSED_LOST
             }
             case CLOSE_WON_OPPORTUNITY -> {
+                opportunityService.showOpportunities();
                 var id = inputService.askOpportunityId();
                 opportunityService.closeOpportunity(id, Status.CLOSED_WON); //edites opportunity status to enum CLOSED_WON
             }

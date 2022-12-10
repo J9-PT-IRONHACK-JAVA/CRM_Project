@@ -1,5 +1,6 @@
 package com.example.crm_project.Repository;
 
+import com.example.crm_project.CrmProjectApplication;
 import com.example.crm_project.Enums.Industry;
 import com.example.crm_project.Enums.Product;
 import com.example.crm_project.Enums.Status;
@@ -10,6 +11,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.data.jpa.repository.Query;
 
 import java.math.BigDecimal;
@@ -21,7 +23,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class AccountRepositoryTest {
-
+@MockBean
+CrmProjectApplication crmProjectApplication;
     SalesRep salesRep;
     Lead lead;
     Lead lead2;
@@ -65,7 +68,7 @@ class AccountRepositoryTest {
 
         contactList.add(Account.newContact(lead));
 
-        account = accountRepository.save(new Account("TiendaPaco",Industry.ECOMMERCE, 200L, "BCN", "ESP", contactList, opportunityList));
+        account = accountRepository.save(new Account("TiendaPaco","ECOMMERCE", 200L, "BCN", "ESP", contactList));
         account2 = accountRepository.save(new Account("TiendaLola",Industry.ECOMMERCE, 400L, "BCN", "FRA", contactList, opportunityList2));
 
         opportunity = opportunityRepository.save(new Opportunity(Product.BOX, 20L,
@@ -81,12 +84,13 @@ class AccountRepositoryTest {
         opportunity4.setStatus(Status.CLOSED_LOST);
         opportunityRepository.save(opportunity4);
 
-        opportunityList.add(opportunity);
-        opportunityList.add(opportunity2);
-        opportunityList2.add(opportunity3);
-        opportunityList2.add(opportunity4);
+//        opportunityList.add(opportunity);
+//        opportunityList.add(opportunity2);
+//        opportunityList2.add(opportunity3);
+//        opportunityList2.add(opportunity4);
         leadList.add(lead);
         leadList.add(lead2);
+        leadRepository.saveAll(leadList);
 
     }
 
@@ -123,13 +127,14 @@ class AccountRepositoryTest {
     @DisplayName("Median of employeeCount")
     void medianEmployeeCount_works() {
         Long employee = accountRepository.medianEmployeeCount();
-        System.out.println(employee);
+//        System.out.println(employee);
         assertEquals(300, employee);
     }
 
     @Test
     void findAccountByNameTest() {
-        var existingAccount = accountRepository.findAccountByName("TiendaPaco");
+        var existingAccount = accountRepository.findAccountByCompanyName("TiendaPaco");
+        System.out.println("hello");
         assertEquals(existingAccount.isPresent(), true);
     }
 }

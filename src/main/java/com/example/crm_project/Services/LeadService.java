@@ -69,8 +69,10 @@ public class LeadService {
                 leadToConvert.get().getSalesRep());
 
         newAccount.addContact(newContact);
-        newAccount.addOpportunity(newOpportunity);
-        accountRepository.save(newAccount);
+        newAccount = accountRepository.save(newAccount);
+//        newAccount.addOpportunity(newOpportunity);
+        newOpportunity.setAccount(newAccount);
+
         opportunityRepository.save(newOpportunity);
         leadRepository.delete(leadToConvert.get());
 
@@ -92,8 +94,9 @@ public class LeadService {
                 leadToConvert.get().getSalesRep());
 
         existingAccount.addContact(newContact);
-        existingAccount.addOpportunity(newOpportunity);
-        accountRepository.save(existingAccount);
+//        existingAccount.addOpportunity(newOpportunity);
+        existingAccount = accountRepository.save(existingAccount);
+        newOpportunity.setAccount(existingAccount);
         opportunityRepository.save(newOpportunity);
         leadRepository.delete(leadToConvert.get());
 

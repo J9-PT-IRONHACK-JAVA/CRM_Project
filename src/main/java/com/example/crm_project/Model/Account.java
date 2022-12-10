@@ -15,6 +15,8 @@ import java.util.List;
 
 @Entity
 @Table(name = "accounts")
+@ToString(
+        exclude = "opportunities")
 
 public class Account {
 
@@ -46,6 +48,15 @@ public class Account {
         setCountry(country);
         contacts = new ArrayList<>();
         opportunities = new ArrayList<>();
+    }
+
+    public Account(String companyName, String industry, long employeeCount, String city, String country, List<Contact> contacts) {
+        setCompanyName(companyName);
+        setIndustry(industry);
+        setEmployeeCount(employeeCount);
+        setCity(city);
+        setCountry(country);
+        setContacts(contacts);
     }
 
     //  Constructor => Adds a contact to contacts list & opportunity to opportunity list
@@ -88,8 +99,9 @@ public class Account {
     @Override
     public String toString() {
         return "Account: id = " + getId() + ", industry= " + getIndustry() + ", employeeCount= " + getEmployeeCount() + ", city= " + getCity() + ", country= " + getCountry() +
-               "\n Contact List \n" + getContacts() + "\n Opportunity List \n" + getOpportunities();
+               "\n Contact List \n" + getContacts();
     }
+
 
     public static Contact newContact(Lead lead) {
         Contact contact = new Contact(lead.getName(), lead.getPhoneNumber(), lead.getEmail(), lead.getCompanyName());
