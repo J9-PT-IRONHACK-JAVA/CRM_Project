@@ -28,11 +28,9 @@ public interface OpportunityRepository extends JpaRepository<Opportunity, Long> 
 
     @Query("SELECT COUNT(a), a.product FROM Opportunity a WHERE a.status = 'OPEN' GROUP BY a.product ")
     List<Object[]>countOpenOppByProduct();
-
-
     //By Country
     //A count of all Opportunities by country can be displayed by typing “Report Opportunity by Country”
-    @Query("SELECT a.country, o.decisionMaker.companyName, o.decisionMaker.email, o.decisionMaker.name, o.decisionMaker.phoneNumber, o.product, o.quantity, o.status FROM Opportunity o JOIN Account a ON o.account.id = a.id GROUP BY a.country, o.decisionMaker.companyName, o.decisionMaker.email, o.decisionMaker.name, o.decisionMaker.phoneNumber, o.product, o.quantity, o.status" )
+    @Query("SELECT a.country, COUNT(o) FROM Opportunity o JOIN Account a ON o.account.id = a.id GROUP BY a.country" )
     List<Object[]>countOppByCountry();
 
     //count of all CLOSED_WON Opportunities by country can be displayed by typing “Report CLOSED-WON by Country”
@@ -47,60 +45,15 @@ public interface OpportunityRepository extends JpaRepository<Opportunity, Long> 
     @Query("SELECT COUNT( o ) AS OPEN_COUNT ,a.country FROM Opportunity o JOIN Account a ON o.account.id = a.id WHERE o.status = 'OPEN' GROUP BY a.country" )
     List<Object[]>countOpenOppByCountry();
 
+    //Quantity States
+    //The median quantity of products order can be displayed by typing “Median Quantity”
+    @Query("SELECT AVG(quantity) FROM Opportunity")
+    List<Object[]> countAvgOfProducts();
+    //The maximum quantity of products order can be displayed by typing “Max Quantity”
+    @Query("SELECT product, quantity FROM Opportunity WHERE quantity = (SELECT MAX(quantity) FROM Opportunity )")
+    List<Object[]> countMaxOfProducts();
+    //The minimum quantity of products order can be displayed by typing “Min Quantity”
+    @Query("SELECT product, quantity FROM Opportunity WHERE quantity = (SELECT MIN(quantity) FROM Opportunity)")
+    List<Object[]> countMinOfProducts();
 
-    // * by Product
-    //The mean quantity of products order can be displayed
-    // ! Every method exposed here, needs to start with a @Query("query from SQL like we did on class in workbench")
-    /*Double getAvgQuantityOfProducts();
-
-    //The median quantity of products order
-    Double getMedianQuantityOfProducts();
-
-    //A count of all Opportunities by the product
-    List<Object[]> findCountByProduct();
-
-    //The maximum quantity of products order
-    Long getMaxQuantityOfProducts();
-
-    //The minimum quantity of products order
-    Long getMinQuantityOfProducts();
-
-    //Opportunities by CITY
-    List<Object[]> getCountOpportunitiesByCity();
-
-    List<Object[]> getCountClosedWonOpportunitiesByCity();
-
-    List<Object[]> getCountClosedLostOpportunitiesByCity();
-
-    List<Object[]> getCountOpenOpportunitiesByCity();
-
-    //Opportunities by COUNTRY
-    List<Object[]> getCountOpportunitiesByCountry();
-
-    List<Object[]> getCountOpportunitiesByCountryWhereStatusLikeOpen();
-
-    List<Object[]> getCountOpportunitiesByCountryWhereStatusLikeWon();
-
-    List<Object[]> getCountOpportunitiesByCountryWhereStatusLikeLost();
-
-    //Opportunities by PRODUCT
-    List<Object[]> getCountOpportunitiesByProduct();
-
-    List<Object[]> getCountOpportunitiesByProductWhereStatusLikeOpen();
-
-    List<Object[]> getCountOpportunitiesByProductWhereStatusLikeWon();
-
-    List<Object[]> getCountOpportunitiesByProductWhereStatusLikeLost();
-
-    //Average number of Opportunities associated with an Account
-    Double getAvgOpportunitiesAccount();
-
-    //maximum number of Opportunities associated with an Account
-    Long getMaxOpportunitiesAccount();
-
-    //minimum number of Opportunities associated with an Account
-    Long getMinOpportunitiesAccount();
-
-    //median number of Opportunities associated with an Account
-    Double getMedianOpportunitiesAccount();*/
 }

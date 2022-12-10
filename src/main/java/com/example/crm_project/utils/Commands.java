@@ -66,6 +66,108 @@ public class Commands {
                     ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDFE0 Opportunity States\n"+
                     "\n" +
                     ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDFE0 back\n\n";
+
+    public static String salesReportMessage =
+
+            ConsoleColors.PURPLE_BOLD_BRIGHT + "Available commands:" + ConsoleColors.RESET + "\n" +
+                    "\n" +
+                    "\n" +
+                    ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDFE1 Report Lead by SalesRep " + ConsoleColors.RESET +
+                    "\n" +
+                    ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDFE0 Report Opportunity by SalesRep" +
+                    "\n" +
+                    ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDFE2 Report CLOSED-WON by SalesRep" +
+                    "\n" +
+                    ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDFE0 Report CLOSED-LOST by SalesRep" +
+                    "\n" +
+                    ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDFE0 Report OPEN by SalesRep" +
+                    "\n" +
+                    ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDFE0 back\n\n";
+
+    public static String OppByProductReportMessage =
+
+            ConsoleColors.PURPLE_BOLD_BRIGHT + "Available commands:" + ConsoleColors.RESET + "\n" +
+                    "\n" +
+                    ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDD35 Report Opportunity by the product " + ConsoleColors.RESET +
+                    "\n" +
+                    ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDFE1 Report CLOSED-WON by the product " + ConsoleColors.RESET +
+                    "\n" +
+                    ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDFE0 Report CLOSED-LOST by the product" +
+                    "\n" +
+                    ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDFE2 Report OPEN by the product" +
+                    "\n" +
+                    ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDFE0 back\n\n";
+
+    public static String OppByCountryReportMessage =
+
+            ConsoleColors.PURPLE_BOLD_BRIGHT + "Available commands:" + ConsoleColors.RESET + "\n" +
+                    "\n" +
+                    ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDD35 Report Opportunity by Country " + ConsoleColors.RESET +
+                    "\n" +
+                    ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDFE1 Report CLOSED-WON by Country " + ConsoleColors.RESET +
+                    "\n" +
+                    ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDFE0 Report CLOSED-LOST by Country" +
+                    "\n" +
+                    ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDFE2 Report OPEN by Country" +
+                    "\n" +
+                    ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDFE0 back\n\n";
+    public static String OppByCityReportMessage =
+
+            ConsoleColors.PURPLE_BOLD_BRIGHT + "Available commands:" + ConsoleColors.RESET + "\n" +
+                    "\n" +
+                    ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDD35 Report Opportunity by City " + ConsoleColors.RESET +
+                    "\n" +
+                    ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDFE1 Report CLOSED-WON by City " + ConsoleColors.RESET +
+                    "\n" +
+                    ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDFE0 Report CLOSED-LOST by City" +
+                    "\n" +
+                    ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDFE2 Report OPEN by City" +
+                    "\n" +
+                    ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDFE0 back\n\n";
+
+    public static String OppByIndustryReportMessage =
+
+            ConsoleColors.PURPLE_BOLD_BRIGHT + "Available commands:" + ConsoleColors.RESET + "\n" +
+                    "\n" +
+                    ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDD35 Report Opportunity by Industry " + ConsoleColors.RESET +
+                    "\n" +
+                    ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDFE1 Report CLOSED-WON by Industry " + ConsoleColors.RESET +
+                    "\n" +
+                    ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDFE0 Report CLOSED-LOST by Industry" +
+                    "\n" +
+                    ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDFE2 Report OPEN by Industry" +
+                    "\n" +
+                    ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDFE0 back\n\n";
+
+    public static String employeeCountReportMessage =
+
+            ConsoleColors.PURPLE_BOLD_BRIGHT + "Available commands:" + ConsoleColors.RESET + "\n" +
+                    "\n" +
+                    ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDD35 Median EmployeeCount " + ConsoleColors.RESET +
+                    "\n" +
+                    ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDFE1 Max EmployeeCount " + ConsoleColors.RESET +
+                    "\n" +
+                    ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDFE0 Min EmployeeCount" +
+                    "\n" +
+                    "\n" +
+                    ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDFE0 back\n\n";
+
+    public static String productCountReportMessage =
+
+            ConsoleColors.PURPLE_BOLD_BRIGHT + "Available commands:" + ConsoleColors.RESET + "\n" +
+                    "\n" +
+                    ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDD35 Media Quantity " + ConsoleColors.RESET +
+                    "\n" +
+                    ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDFE1 Max Quantity " + ConsoleColors.RESET +
+                    "\n" +
+                    ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDFE0 Min Quantity " +
+                    "\n" +
+                    "\n" +
+                    ConsoleColors.PURPLE_BOLD_BRIGHT + " \uD83D\uDFE0 back\n\n";
 }
+
+
+
+
 
 

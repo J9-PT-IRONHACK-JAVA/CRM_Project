@@ -22,8 +22,8 @@ public class Menu {
     @Autowired
     private LoginService loginService;
     public void mainMenu() {
-
-        loginService.login();
+        String logedUser;
+        logedUser = loginService.login();
 
         System.out.println(ConsoleColors.BLUE_BOLD_BRIGHT + "Welcome to your favorite CRM system. How can I help you today?");
 
@@ -37,7 +37,7 @@ public class Menu {
                 exitApp();
                 System.exit(0);
             }
-            crmService.executeCommand(input, sc);
+            crmService.executeCommand(logedUser,input, sc);
 
 
         } while (true);

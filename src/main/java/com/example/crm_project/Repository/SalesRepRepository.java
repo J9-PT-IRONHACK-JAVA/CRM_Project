@@ -9,21 +9,21 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 @Repository
 public interface SalesRepRepository extends JpaRepository<SalesRep, Long> {
-    @Query("SELECT sr.name, COUNT(l) FROM SalesRep sr JOIN sr.leads l GROUP BY sr.name")
-    List<Object[]> countLeadsBySalesRep();
+    @Query("SELECT sr.name, COUNT(l) FROM SalesRep sr JOIN sr.leads l WHERE sr.name = ?1")
+    List<Object[]> countLeadsBySaleRep(String string);
 
 
-    @Query("SELECT sr.name, COUNT(o) FROM SalesRep sr JOIN sr.opportunities o GROUP BY sr.name")
-    List<Object[]> countOpportunitiesBySalesRep();
+    @Query("SELECT sr.name, COUNT(o) FROM SalesRep sr JOIN sr.opportunities o WHERE sr.name = ?1")
+    List<Object[]> countOpportunitiesBySalesRep(String string);
 
-    @Query("SELECT sr.name, COUNT(op) FROM SalesRep  sr JOIN sr.opportunities op WHERE op.status = 'CLOSED_WON' GROUP BY sr.name")
-    List<Object[]> findCountByStatusClosedWon();
+    @Query("SELECT sr.name, COUNT(op) FROM SalesRep  sr JOIN sr.opportunities op WHERE op.status = 'CLOSED_WON' AND sr.name = ?1")
+    List<Object[]> findCountByStatusClosedWon(String string);
 
-    @Query("SELECT sr.name, COUNT(o) FROM SalesRep  sr JOIN sr.opportunities o WHERE o.status = 'CLOSED_LOST' GROUP BY sr.name")
-    List<Object[]> findCountByStatusClosedLost();
+    @Query("SELECT sr.name, COUNT(o) FROM SalesRep  sr JOIN sr.opportunities o WHERE o.status = 'CLOSED_LOST' AND sr.name = ?1")
+    List<Object[]> findCountByStatusClosedLost(String string);
 
-    @Query("SELECT sr.name, COUNT(o) FROM SalesRep  sr JOIN sr.opportunities o WHERE o.status = 'OPEN' GROUP BY sr.name")
-    List<Object[]> findCountByStatusOpen();
+    @Query("SELECT sr.name, COUNT(o) FROM SalesRep  sr JOIN sr.opportunities o WHERE o.status = 'OPEN' AND sr.name = ?1")
+    List<Object[]> findCountByOpenStatus(String string);
 
     @Query(value = "SELECT id, rep_name, password FROM sales_reps", nativeQuery = true)
     List<SalesRep> getAllSalesrep();
