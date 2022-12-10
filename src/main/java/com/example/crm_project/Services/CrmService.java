@@ -61,7 +61,7 @@ public class CrmService {
     void executeReportCommand() {
     }
 
-    public void executeCommand(String input, Scanner sc){
+    public void executeCommand(String logedUser, String input, Scanner sc){
 
         switch (input) {
 
@@ -70,7 +70,7 @@ public class CrmService {
             }
             case REPORT -> {
                 executeReportCommand();
-                reportInputService.mainRepo(sc);
+                reportInputService.mainRepo(logedUser ,sc);
             }
             case NEW_LEAD-> {
                 var newLeadInfo = inputService.askNewLeadInfo();

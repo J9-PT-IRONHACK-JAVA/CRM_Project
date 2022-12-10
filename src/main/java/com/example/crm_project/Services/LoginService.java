@@ -30,7 +30,7 @@ public class LoginService {
     @Autowired
     private Prints prints;
 
-    public void login(){
+    public String login(){
         prints.printLogin();
         String userName;
         String password;
@@ -54,6 +54,8 @@ public class LoginService {
         var loggedSalesRep = salesRepRepository.getSalesRepByName(userName);
         this.setCurrentSalesRep(loggedSalesRep);
         System.out.println("Login successful");
+
+        return userName;
     }
 
 
